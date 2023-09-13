@@ -10,9 +10,7 @@
   "scripts": {
     "build:dev": "rm -rf dist && tsup src/index.ts --format cjs,esm,iife --dts --minify && rm -rf ../data-hub-squid/src/dev-dependecies/data-hub-sdk/* && cp -r ./dist/ ../data-hub-squid/src/dev-dependecies/data-hub-sdk",
     "build": "rm -rf dist && tsup src/index.ts --format cjs,esm,iife --dts --minify",
-    "prepare": "yarn install && yarn build",
-    "install": "yarn install && yarn build",
-    "prepublish": "yarn install && yarn build",
+    "prepare": "yarn build",
     "publish:npm": "yarn build && npm publish --access public",
     "test": "jest --verbose"
   },
