@@ -44,6 +44,8 @@ export const socialCallName = {
   force_set_inner_value: "force_set_inner_value",
   set_outer_value: "set_outer_value",
   set_payment_beneficiary: "set_payment_beneficiary",
+  synth_create_post_tx_failed: "synth_create_post_tx_failed",
+  synth_update_post_tx_failed: "synth_update_post_tx_failed",
 } as const;
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
