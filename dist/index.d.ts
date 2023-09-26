@@ -316,22 +316,26 @@ interface FollowAccountCallParsedArgs {
 interface SynthCreatePostTxFailedCallParsedArgs {
     reason?: string;
     optimisticId: string;
+    timestamp: string;
 }
 interface SynthCreatePostTxRetryCallParsedArgs {
     success: boolean;
     reason?: string;
     optimisticId: string;
+    timestamp: string;
 }
 interface SynthUpdatePostTxFailedCallParsedArgs {
     reason?: string;
     optimisticId?: string;
     persistentId: string;
+    timestamp: string;
 }
 interface SynthUpdatePostTxRetryCallParsedArgs {
     success: boolean;
     reason?: string;
     optimisticId?: string;
     persistentId: string;
+    timestamp: string;
 }
 type SocialCallNameEnum = typeof socialCallName;
 type SocialCallDataArgs<E extends keyof typeof socialCallName> = E extends (typeof socialCallName)['create_post'] ? CreatePostCallParsedArgs : E extends (typeof socialCallName)['update_post'] ? UpdatePostCallParsedArgs : E extends (typeof socialCallName)['move_post'] ? MovePostCallParsedArgs : E extends (typeof socialCallName)['create_space'] ? CreateSpaceCallParsedArgs : E extends (typeof socialCallName)['update_space'] ? UpdateSpaceCallParsedArgs : E extends (typeof socialCallName)['create_post_reaction'] ? PostReactionCreateCallParsedArgs : E extends (typeof socialCallName)['update_post_reaction'] ? PostReactionUpdateCallParsedArgs : E extends (typeof socialCallName)['delete_post_reaction'] ? PostReactionDeleteCallParsedArgs : E extends (typeof socialCallName)['link_evm_address'] ? LinkEvmAddressCallParsedArgs : E extends (typeof socialCallName)['unlink_evm_address'] ? UnlinkEvmAddressCallParsedArgs : E extends (typeof socialCallName)['follow_post'] ? FollowPostCallParsedArgs : E extends (typeof socialCallName)['unfollow_post'] ? UnfollowPostCallParsedArgs : E extends (typeof socialCallName)['follow_space'] ? FollowSpaceCallParsedArgs : E extends (typeof socialCallName)['unfollow_space'] ? UnfollowSpaceCallParsedArgs : E extends (typeof socialCallName)['follow_account'] ? FollowAccountCallParsedArgs : E extends (typeof socialCallName)['unfollow_account'] ? UnfollowAccountCallParsedArgs : E extends (typeof socialCallName)['synth_create_post_tx_failed'] ? SynthCreatePostTxFailedCallParsedArgs : E extends (typeof socialCallName)['synth_create_post_tx_retry'] ? SynthCreatePostTxRetryCallParsedArgs : E extends (typeof socialCallName)['synth_update_post_tx_failed'] ? SynthUpdatePostTxFailedCallParsedArgs : E extends (typeof socialCallName)['synth_update_post_tx_retry'] ? SynthUpdatePostTxRetryCallParsedArgs : undefined;

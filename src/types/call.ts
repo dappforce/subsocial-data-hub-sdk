@@ -161,18 +161,21 @@ export interface FollowAccountCallParsedArgs {
 export interface SynthCreatePostTxFailedCallParsedArgs {
   reason?: string;
   optimisticId: string;
+  timestamp: string;
 }
 
 export interface SynthCreatePostTxRetryCallParsedArgs {
   success: boolean;
   reason?: string;
   optimisticId: string;
+  timestamp: string;
 }
 
 export interface SynthUpdatePostTxFailedCallParsedArgs {
   reason?: string;
   optimisticId?: string;
   persistentId: string;
+  timestamp: string;
 }
 
 export interface SynthUpdatePostTxRetryCallParsedArgs {
@@ -180,6 +183,7 @@ export interface SynthUpdatePostTxRetryCallParsedArgs {
   reason?: string;
   optimisticId?: string;
   persistentId: string;
+  timestamp: string;
 }
 
 export type SocialCallNameEnum = typeof socialCallName;
