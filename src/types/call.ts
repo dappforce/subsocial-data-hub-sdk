@@ -44,8 +44,11 @@ export const socialCallName = {
   force_set_inner_value: 'force_set_inner_value',
   set_outer_value: 'set_outer_value',
   set_payment_beneficiary: 'set_payment_beneficiary',
+
   synth_create_post_tx_failed: 'synth_create_post_tx_failed',
-  synth_update_post_tx_failed: 'synth_update_post_tx_failed'
+  synth_create_post_tx_retry: 'synth_create_post_tx_retry',
+  synth_update_post_tx_failed: 'synth_update_post_tx_failed',
+  synth_update_post_tx_retry: 'synth_update_post_tx_retry'
 } as const;
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
@@ -160,7 +163,20 @@ export interface SynthCreatePostTxFailedCallParsedArgs {
   optimisticId: string;
 }
 
+export interface SynthCreatePostTxRetryCallParsedArgs {
+  success: boolean;
+  reason?: string;
+  optimisticId: string;
+}
+
 export interface SynthUpdatePostTxFailedCallParsedArgs {
+  reason?: string;
+  optimisticId?: string;
+  persistentId: string;
+}
+
+export interface SynthUpdatePostTxRetryCallParsedArgs {
+  success: boolean;
   reason?: string;
   optimisticId?: string;
   persistentId: string;
@@ -203,8 +219,12 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? UnfollowAccountCallParsedArgs
     : E extends (typeof socialCallName)['synth_create_post_tx_failed']
     ? SynthCreatePostTxFailedCallParsedArgs
+    : E extends (typeof socialCallName)['synth_create_post_tx_retry']
+    ? SynthCreatePostTxRetryCallParsedArgs
     : E extends (typeof socialCallName)['synth_update_post_tx_failed']
     ? SynthUpdatePostTxFailedCallParsedArgs
+    : E extends (typeof socialCallName)['synth_update_post_tx_retry']
+    ? SynthUpdatePostTxRetryCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {
