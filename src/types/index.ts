@@ -2,27 +2,27 @@ import {
   socialEventName,
   SocialEventNameEnum,
   SocialOnChainEventData,
-  SocialOnChainEventDataApiInput,
-} from "./event";
+  SocialOnChainEventDataApiInput
+} from './event';
 import {
   SocialCallData,
   SocialCallDataApiInput,
   socialCallName,
-  SocialCallNameEnum,
-} from "./call";
-import { IpfsContent, ipfsContentSection, IpfsContentSection } from "./ipfs";
+  SocialCallNameEnum
+} from './call';
+import { IpfsContent, ipfsContentSection, IpfsContentSection } from './ipfs';
 
-export * from "./event";
-export * from "./call";
-export * from "./ipfs";
-export * from "./common";
-export * from "./contentExtension";
-export * from "./subscription";
+export * from './event';
+export * from './call';
+export * from './ipfs';
+export * from './common';
+export * from './contentExtension';
+export * from './subscription';
 
 export enum SocialEventDataType {
-  persistent = "persistent",
-  optimistic = "optimistic",
-  offChain = "offChain",
+  persistent = 'persistent',
+  optimistic = 'optimistic',
+  offChain = 'offChain'
 }
 
 export type SocialEventData =
@@ -58,7 +58,7 @@ export type SocialEventDataApiInput =
 export type SocialEventDataGeneric<
   T extends SocialEventDataType,
   C extends keyof SocialCallNameEnum,
-  E extends keyof SocialEventNameEnum
+  E extends keyof SocialEventNameEnum | undefined = undefined
 > = T extends SocialEventDataType.optimistic
   ? {
       dataType: SocialEventDataType.optimistic;
@@ -68,7 +68,9 @@ export type SocialEventDataGeneric<
   : T extends SocialEventDataType.persistent
   ? {
       dataType: SocialEventDataType.persistent;
-      eventData: SocialOnChainEventData<E> | null;
+      eventData: E extends keyof SocialEventNameEnum
+        ? SocialOnChainEventData<E>
+        : never;
       callData: SocialCallData<C>;
     }
   : T extends SocialEventDataType.offChain

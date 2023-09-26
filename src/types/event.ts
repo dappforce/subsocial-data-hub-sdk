@@ -1,47 +1,47 @@
-import {ReactionKind} from "./common";
+import { ReactionKind } from './common';
 
 export const socialEventName = {
-  PostCreated: "PostCreated",
-  PostDeleted: "PostDeleted",
-  PostUpdated: "PostUpdated",
-  PostShared: "PostShared",
-  PostMoved: "PostMoved",
-  PostFollowed: "PostFollowed",
-  PostUnfollowed: "PostUnfollowed",
-  PostReactionCreated: "PostReactionCreated",
-  PostReactionUpdated: "PostReactionUpdated",
-  PostReactionDeleted: "PostReactionDeleted",
-  SpaceCreated: "SpaceCreated",
-  SpaceUpdated: "SpaceUpdated",
-  SpaceFollowed: "SpaceFollowed",
-  SpaceUnfollowed: "SpaceUnfollowed",
-  SpaceOwnershipTransferAccepted: "SpaceOwnershipTransferAccepted",
-  SpaceOwnershipTransferCreated: "SpaceOwnershipTransferCreated",
-  AccountFollowed: "AccountFollowed",
-  AccountUnfollowed: "AccountUnfollowed",
-  ProfileUpdated: "ProfileUpdated",
-  ExtensionDonationCreated: "ExtensionDonationCreated",
-  ExtensionEvmNftShared: "ExtensionEvmNftShared",
-  ExtensionImageCreated: "ExtensionImageCreated",
-  ExtensionSecretBoxCreated: "ExtensionSecretBoxCreated",
-  CommentCreated: "CommentCreated",
-  CommentDeleted: "CommentDeleted",
-  CommentUpdated: "CommentUpdated",
-  CommentShared: "CommentShared",
-  CommentReactionCreated: "CommentReactionCreated",
-  CommentReactionUpdated: "CommentReactionUpdated",
-  CommentReactionDeleted: "CommentReactionDeleted",
-  CommentReplyCreated: "CommentReplyCreated",
-  CommentReplyDeleted: "CommentReplyDeleted",
-  CommentReplyUpdated: "CommentReplyUpdated",
-  CommentReplyShared: "CommentReplyShared",
-  CommentReplyReactionCreated: "CommentReplyReactionCreated",
-  CommentReplyReactionUpdated: "CommentReplyReactionUpdated",
-  CommentReplyReactionDeleted: "CommentReplyReactionDeleted",
-  UserNameRegistered: "UserNameRegistered",
-  UserNameUpdated: "UserNameUpdated",
-  EvmAddressUnlinkedFromAccount: "EvmAddressUnlinkedFromAccount",
-  EvmAddressLinkedToAccount: "EvmAddressLinkedToAccount",
+  PostCreated: 'PostCreated',
+  PostDeleted: 'PostDeleted',
+  PostUpdated: 'PostUpdated',
+  PostShared: 'PostShared',
+  PostMoved: 'PostMoved',
+  PostFollowed: 'PostFollowed',
+  PostUnfollowed: 'PostUnfollowed',
+  PostReactionCreated: 'PostReactionCreated',
+  PostReactionUpdated: 'PostReactionUpdated',
+  PostReactionDeleted: 'PostReactionDeleted',
+  SpaceCreated: 'SpaceCreated',
+  SpaceUpdated: 'SpaceUpdated',
+  SpaceFollowed: 'SpaceFollowed',
+  SpaceUnfollowed: 'SpaceUnfollowed',
+  SpaceOwnershipTransferAccepted: 'SpaceOwnershipTransferAccepted',
+  SpaceOwnershipTransferCreated: 'SpaceOwnershipTransferCreated',
+  AccountFollowed: 'AccountFollowed',
+  AccountUnfollowed: 'AccountUnfollowed',
+  ProfileUpdated: 'ProfileUpdated',
+  ExtensionDonationCreated: 'ExtensionDonationCreated',
+  ExtensionEvmNftShared: 'ExtensionEvmNftShared',
+  ExtensionImageCreated: 'ExtensionImageCreated',
+  ExtensionSecretBoxCreated: 'ExtensionSecretBoxCreated',
+  CommentCreated: 'CommentCreated',
+  CommentDeleted: 'CommentDeleted',
+  CommentUpdated: 'CommentUpdated',
+  CommentShared: 'CommentShared',
+  CommentReactionCreated: 'CommentReactionCreated',
+  CommentReactionUpdated: 'CommentReactionUpdated',
+  CommentReactionDeleted: 'CommentReactionDeleted',
+  CommentReplyCreated: 'CommentReplyCreated',
+  CommentReplyDeleted: 'CommentReplyDeleted',
+  CommentReplyUpdated: 'CommentReplyUpdated',
+  CommentReplyShared: 'CommentReplyShared',
+  CommentReplyReactionCreated: 'CommentReplyReactionCreated',
+  CommentReplyReactionUpdated: 'CommentReplyReactionUpdated',
+  CommentReplyReactionDeleted: 'CommentReplyReactionDeleted',
+  UserNameRegistered: 'UserNameRegistered',
+  UserNameUpdated: 'UserNameUpdated',
+  EvmAddressUnlinkedFromAccount: 'EvmAddressUnlinkedFromAccount',
+  EvmAddressLinkedToAccount: 'EvmAddressLinkedToAccount'
 } as const;
 
 export type SocialEventNameEnum = typeof socialEventName;
@@ -163,47 +163,47 @@ export interface EvmAddressUnlinkedFromAccountEventParsedParams {
 
 export type SocialOnChainEventDataParams<
   E extends keyof typeof socialEventName
-> = E extends (typeof socialEventName)["PostCreated"]
+> = E extends (typeof socialEventName)['PostCreated']
   ? PostCreatedEventParsedParams
-  : E extends (typeof socialEventName)["PostUpdated"]
+  : E extends (typeof socialEventName)['PostUpdated']
   ? PostUpdatedEventParsedParams
-  : E extends (typeof socialEventName)["PostMoved"]
+  : E extends (typeof socialEventName)['PostMoved']
   ? PostMovedEventParsedParams
-  : E extends (typeof socialEventName)["PostFollowed"]
+  : E extends (typeof socialEventName)['PostFollowed']
   ? PostFollowedEventParsedParams
-  : E extends (typeof socialEventName)["PostUnfollowed"]
+  : E extends (typeof socialEventName)['PostUnfollowed']
   ? PostUnfollowedEventParsedParams
-  : E extends (typeof socialEventName)["SpaceUpdated"]
+  : E extends (typeof socialEventName)['SpaceUpdated']
   ? SpaceUpdatedEventParsedParams
-  : E extends (typeof socialEventName)["SpaceCreated"]
+  : E extends (typeof socialEventName)['SpaceCreated']
   ? SpaceCreatedEventParsedParams
-  : E extends (typeof socialEventName)["PostReactionCreated"]
+  : E extends (typeof socialEventName)['PostReactionCreated']
   ? PostReactionCreatedEventParsedParams
-  : E extends (typeof socialEventName)["PostReactionUpdated"]
+  : E extends (typeof socialEventName)['PostReactionUpdated']
   ? PostReactionUpdatedEventParsedParams
-  : E extends (typeof socialEventName)["PostReactionDeleted"]
+  : E extends (typeof socialEventName)['PostReactionDeleted']
   ? PostReactionDeletedEventParsedParams
-  : E extends (typeof socialEventName)["ProfileUpdated"]
+  : E extends (typeof socialEventName)['ProfileUpdated']
   ? ProfileUpdatedEventParsedParams
-  : E extends (typeof socialEventName)["SpaceFollowed"]
+  : E extends (typeof socialEventName)['SpaceFollowed']
   ? SpaceFollowedEventParsedParams
-  : E extends (typeof socialEventName)["SpaceUnfollowed"]
+  : E extends (typeof socialEventName)['SpaceUnfollowed']
   ? SpaceUnfollowedEventParsedParams
-  : E extends (typeof socialEventName)["SpaceOwnershipTransferCreated"]
+  : E extends (typeof socialEventName)['SpaceOwnershipTransferCreated']
   ? SpaceOwnershipTransferCreatedEventParsedParams
-  : E extends (typeof socialEventName)["SpaceOwnershipTransferAccepted"]
+  : E extends (typeof socialEventName)['SpaceOwnershipTransferAccepted']
   ? SpaceOwnershipTransferAcceptedEventParsedParams
-  : E extends (typeof socialEventName)["AccountFollowed"]
+  : E extends (typeof socialEventName)['AccountFollowed']
   ? AccountFollowedEventParsedParams
-  : E extends (typeof socialEventName)["AccountUnfollowed"]
+  : E extends (typeof socialEventName)['AccountUnfollowed']
   ? AccountUnfollowedEventParsedParams
-  : E extends (typeof socialEventName)["UserNameRegistered"]
+  : E extends (typeof socialEventName)['UserNameRegistered']
   ? DomainRegisteredEventParsedParams
-  : E extends (typeof socialEventName)["UserNameUpdated"]
+  : E extends (typeof socialEventName)['UserNameUpdated']
   ? DomainMetaUpdatedEventParsedParams
-  : E extends (typeof socialEventName)["EvmAddressLinkedToAccount"]
+  : E extends (typeof socialEventName)['EvmAddressLinkedToAccount']
   ? EvmAddressLinkedToAccountEventParsedParams
-  : E extends (typeof socialEventName)["EvmAddressUnlinkedFromAccount"]
+  : E extends (typeof socialEventName)['EvmAddressUnlinkedFromAccount']
   ? EvmAddressUnlinkedFromAccountEventParsedParams
   : never;
 
