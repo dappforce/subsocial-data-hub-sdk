@@ -208,6 +208,7 @@ export type SocialOnChainEventDataParams<
   : never;
 
 export type SocialOnChainEventMetadata = {
+  id: string;
   indexInBlock: number;
   blockNumber: number;
   blockHash: string;
