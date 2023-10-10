@@ -25,32 +25,37 @@ export enum SocialEventDataType {
   offChain = 'offChain'
 }
 
+export type SocialEventDataSignature = {
+  providerAddr: string;
+  sig: string;
+};
+
 export type SocialEventData =
-  | ({ dataType: SocialEventDataType.optimistic } & {
+  | (SocialEventDataSignature & { dataType: SocialEventDataType.optimistic } & {
       callData: SocialCallData<keyof typeof socialCallName>;
       content?: Partial<IpfsContent<keyof typeof ipfsContentSection>>;
     })
-  | ({ dataType: SocialEventDataType.persistent } & {
+  | (SocialEventDataSignature & { dataType: SocialEventDataType.persistent } & {
       eventData: SocialOnChainEventData<keyof typeof socialEventName> | null;
       callData: SocialCallData<keyof typeof socialCallName>;
     })
-  | ({ dataType: SocialEventDataType.offChain } & {
+  | (SocialEventDataSignature & { dataType: SocialEventDataType.offChain } & {
       callData: SocialCallData<keyof typeof socialCallName>;
       content?: Partial<IpfsContent<keyof typeof ipfsContentSection>>;
     });
 
 export type SocialEventDataApiInput =
-  | ({ dataType: SocialEventDataType.optimistic } & {
+  | (SocialEventDataSignature & { dataType: SocialEventDataType.optimistic } & {
       callData: SocialCallDataApiInput<keyof typeof socialCallName>;
       content?: string;
     })
-  | ({ dataType: SocialEventDataType.persistent } & {
+  | (SocialEventDataSignature & { dataType: SocialEventDataType.persistent } & {
       eventData: SocialOnChainEventDataApiInput<
         keyof typeof socialEventName
       > | null;
       callData: SocialCallDataApiInput<keyof typeof socialCallName>;
     })
-  | ({ dataType: SocialEventDataType.offChain } & {
+  | (SocialEventDataSignature & { dataType: SocialEventDataType.offChain } & {
       callData: SocialCallDataApiInput<keyof typeof socialCallName>;
       content?: string;
     });
@@ -60,13 +65,13 @@ export type SocialEventDataGeneric<
   C extends keyof SocialCallNameEnum,
   E extends keyof SocialEventNameEnum | undefined = undefined
 > = T extends SocialEventDataType.optimistic
-  ? {
+  ? SocialEventDataSignature & {
       dataType: SocialEventDataType.optimistic;
       callData: SocialCallData<C>;
       content?: Partial<IpfsContent<keyof typeof ipfsContentSection>>;
     }
   : T extends SocialEventDataType.persistent
-  ? {
+  ? SocialEventDataSignature & {
       dataType: SocialEventDataType.persistent;
       eventData: E extends keyof SocialEventNameEnum
         ? SocialOnChainEventData<E>
@@ -74,7 +79,7 @@ export type SocialEventDataGeneric<
       callData: SocialCallData<C>;
     }
   : T extends SocialEventDataType.offChain
-  ? {
+  ? SocialEventDataSignature & {
       dataType: SocialEventDataType.offChain;
       callData: SocialCallData<C>;
       content?: Partial<IpfsContent<keyof typeof ipfsContentSection>>;

@@ -234,13 +234,11 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
 export type SocialCallData<C extends keyof typeof socialCallName> = {
   name: C;
   signer: string;
-  txSig: string;
   args?: SocialCallDataArgs<C>;
 };
 
 export type SocialCallDataApiInput<C extends keyof typeof socialCallName> = {
   name: C;
   signer: string;
-  txSig: string;
   args?: string;
 };
