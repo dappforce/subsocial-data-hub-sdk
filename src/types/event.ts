@@ -41,7 +41,9 @@ export const socialEventName = {
   UserNameRegistered: 'UserNameRegistered',
   UserNameUpdated: 'UserNameUpdated',
   EvmAddressUnlinkedFromAccount: 'EvmAddressUnlinkedFromAccount',
-  EvmAddressLinkedToAccount: 'EvmAddressLinkedToAccount'
+  EvmAddressLinkedToAccount: 'EvmAddressLinkedToAccount',
+  ProxyAdded: 'ProxyAdded',
+  ProxyRemoved: 'ProxyRemoved'
 } as const;
 
 export type SocialEventNameEnum = typeof socialEventName;
@@ -161,6 +163,18 @@ export interface EvmAddressUnlinkedFromAccountEventParsedParams {
   ethereumAccountId: string;
 }
 
+export interface ProxyAddedEventParsedParams {
+  delegatorAccountId: string;
+  proxyAccountId: string;
+  proxyType: string;
+}
+
+export interface ProxyRemovedEventParsedParams {
+  delegatorAccountId: string;
+  proxyAccountId: string;
+  proxyType: string;
+}
+
 export type SocialOnChainEventDataParams<
   E extends keyof typeof socialEventName
 > = E extends (typeof socialEventName)['PostCreated']
@@ -205,6 +219,10 @@ export type SocialOnChainEventDataParams<
   ? EvmAddressLinkedToAccountEventParsedParams
   : E extends (typeof socialEventName)['EvmAddressUnlinkedFromAccount']
   ? EvmAddressUnlinkedFromAccountEventParsedParams
+  : E extends (typeof socialEventName)['ProxyAdded']
+  ? ProxyAddedEventParsedParams
+  : E extends (typeof socialEventName)['ProxyRemoved']
+  ? ProxyRemovedEventParsedParams
   : never;
 
 export type SocialOnChainEventMetadata = {

@@ -44,6 +44,8 @@ export const socialCallName = {
   force_set_inner_value: 'force_set_inner_value',
   set_outer_value: 'set_outer_value',
   set_payment_beneficiary: 'set_payment_beneficiary',
+  add_proxy: 'add_proxy',
+  remove_proxy: 'remove_proxy',
 
   synth_create_post_tx_failed: 'synth_create_post_tx_failed',
   synth_create_post_tx_retry: 'synth_create_post_tx_retry',
@@ -157,6 +159,14 @@ export interface UnfollowAccountCallParsedArgs {
 export interface FollowAccountCallParsedArgs {
   accountId: string;
 }
+export interface AddProxyCallParsedArgs {
+  proxyAccountId: string;
+  proxyType: string;
+}
+export interface RemoveProxyCallParsedArgs {
+  proxyAccountId: string;
+  proxyType: string;
+}
 
 export interface SynthCreatePostTxFailedCallParsedArgs {
   reason?: string;
@@ -229,16 +239,22 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthUpdatePostTxFailedCallParsedArgs
     : E extends (typeof socialCallName)['synth_update_post_tx_retry']
     ? SynthUpdatePostTxRetryCallParsedArgs
+    : E extends (typeof socialCallName)['add_proxy']
+    ? AddProxyCallParsedArgs
+    : E extends (typeof socialCallName)['remove_proxy']
+    ? RemoveProxyCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {
   name: C;
   signer: string;
+  proxy?: string;
   args?: SocialCallDataArgs<C>;
 };
 
 export type SocialCallDataApiInput<C extends keyof typeof socialCallName> = {
   name: C;
   signer: string;
+  proxy?: string;
   args?: string;
 };
