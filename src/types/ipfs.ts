@@ -1,10 +1,10 @@
-import { IpfsPostContent, IpfsSpaceContent } from "@subsocial/api/types/ipfs";
-import { SummarizedContent } from "@subsocial/api/types/dto";
-import { TweetAttachmentV2, ReferencedTweetV2 } from "twitter-api-v2";
-import { ContentExtensionData } from "./contentExtension";
+import { IpfsPostContent, IpfsSpaceContent } from '@subsocial/api/types/ipfs';
+import { SummarizedContent } from '@subsocial/api/types/dto';
+import { TweetAttachmentV2, ReferencedTweetV2 } from 'twitter-api-v2';
+import { ContentExtensionData } from './contentExtension';
 
 export enum InReplyToKind {
-  Post = "Post",
+  Post = 'Post'
 }
 
 export type PostTweetDetailsIPFS = {
@@ -26,6 +26,9 @@ type SpaceContentWithInterests = {
 
 type SpaceContentWithAppId = {
   appId?: string;
+};
+type SpaceContentWithProfileSource = {
+  profileSource?: string;
 };
 
 type PostContentWithTweet = {
@@ -51,7 +54,8 @@ export type PostContentWithInReplyTo = {
 export type IpfsSpaceContentSummarized = IpfsSpaceContent &
   SummarizedContent &
   SpaceContentWithInterests &
-  SpaceContentWithAppId;
+  SpaceContentWithAppId &
+  SpaceContentWithProfileSource;
 export type IpfsPostContentSummarized = IpfsPostContent &
   SummarizedContent &
   PostContentWithTweet &
@@ -61,8 +65,8 @@ export type IpfsPostContentSummarized = IpfsPostContent &
   PostContentWithOptimisticId;
 
 export const ipfsContentSection = {
-  post: "post",
-  space: "space",
+  post: 'post',
+  space: 'space'
 } as const;
 
 export type IpfsContentSection = typeof ipfsContentSection;
@@ -74,34 +78,34 @@ export type IpfsContent<T extends keyof typeof ipfsContentSection> =
     ? IpfsSpaceContentSummarized
     : never;
 
-export const supportedIpfsContentMap = new Map<"post" | "space", Set<string>>([
+export const supportedIpfsContentMap = new Map<'post' | 'space', Set<string>>([
   [
-    "post",
+    'post',
     new Set<string>([
-      "title",
-      "image",
-      "link",
-      "format",
-      "canonical",
-      "body",
-      "slug",
-      "tags",
-      "tweet",
-      "extensions",
-      "inReplyTo",
-      "optimisticId",
-    ]),
+      'title',
+      'image',
+      'link',
+      'format',
+      'canonical',
+      'body',
+      'slug',
+      'tags',
+      'tweet',
+      'extensions',
+      'inReplyTo',
+      'optimisticId'
+    ])
   ],
   [
-    "space",
+    'space',
     new Set<string>([
-      "name",
-      "email",
-      "about",
-      "image",
-      "tags",
-      "links",
-      "interests",
-    ]),
-  ],
+      'name',
+      'email',
+      'about',
+      'image',
+      'tags',
+      'links',
+      'interests'
+    ])
+  ]
 ]);

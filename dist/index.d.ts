@@ -457,6 +457,9 @@ type SpaceContentWithInterests = {
 type SpaceContentWithAppId = {
     appId?: string;
 };
+type SpaceContentWithProfileSource = {
+    profileSource?: string;
+};
 type PostContentWithTweet = {
     tweet?: PostTweetDetailsIPFS;
 };
@@ -475,7 +478,7 @@ type PostContentWithInReplyTo = {
         kind: InReplyToKind;
     };
 };
-type IpfsSpaceContentSummarized = IpfsSpaceContent & SummarizedContent & SpaceContentWithInterests & SpaceContentWithAppId;
+type IpfsSpaceContentSummarized = IpfsSpaceContent & SummarizedContent & SpaceContentWithInterests & SpaceContentWithAppId & SpaceContentWithProfileSource;
 type IpfsPostContentSummarized = IpfsPostContent & SummarizedContent & PostContentWithTweet & PostContentWithAppId & PostContentWithExtensions & PostContentWithInReplyTo & PostContentWithOptimisticId;
 declare const ipfsContentSection: {
     readonly post: "post";
