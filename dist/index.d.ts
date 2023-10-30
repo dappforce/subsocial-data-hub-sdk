@@ -365,12 +365,16 @@ type SocialCallDataArgs<E extends keyof typeof socialCallName> = E extends (type
 type SocialCallData<C extends keyof typeof socialCallName> = {
     name: C;
     signer: string;
+    timestamp?: number;
+    uuid?: string;
     proxy?: string;
     args?: SocialCallDataArgs<C>;
 };
 type SocialCallDataApiInput<C extends keyof typeof socialCallName> = {
     name: C;
     signer: string;
+    timestamp?: number;
+    uuid?: string;
     proxy?: string;
     args?: string;
 };

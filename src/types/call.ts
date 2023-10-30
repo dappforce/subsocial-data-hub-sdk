@@ -248,6 +248,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
 export type SocialCallData<C extends keyof typeof socialCallName> = {
   name: C;
   signer: string;
+  timestamp?: number;
+  uuid?: string;
   proxy?: string;
   args?: SocialCallDataArgs<C>;
 };
@@ -255,6 +257,8 @@ export type SocialCallData<C extends keyof typeof socialCallName> = {
 export type SocialCallDataApiInput<C extends keyof typeof socialCallName> = {
   name: C;
   signer: string;
+  timestamp?: number;
+  uuid?: string;
   proxy?: string;
   args?: string;
 };
