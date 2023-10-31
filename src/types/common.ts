@@ -7,9 +7,9 @@ export type ContentSrcDecorated = {
 };
 
 export enum PostKind {
-  Comment = "Comment",
-  SharedPost = "SharedPost",
-  RegularPost = "RegularPost",
+  Comment = 'Comment',
+  SharedPost = 'SharedPost',
+  RegularPost = 'RegularPost'
 }
 
 export interface SpacePermissionsScope {
@@ -20,6 +20,12 @@ export interface SpacePermissionsScope {
 }
 
 export enum ReactionKind {
-  Upvote = "Upvote",
-  Downvote = "Downvote",
+  Upvote = 'Upvote',
+  Downvote = 'Downvote'
 }
+
+export const socialEventProtVersion = {
+  '0.1': '0.1'
+} as const;
+
+export type SocialEventProtVersion = keyof typeof socialEventProtVersion;
