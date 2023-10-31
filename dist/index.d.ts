@@ -522,54 +522,57 @@ declare enum SocialEventDataType {
     optimistic = "optimistic",
     offChain = "offChain"
 }
+type SocialEventProtocolMetadata = {
+    protVersion: SocialEventProtVersion;
+};
 type SocialEventDataSignature = {
     providerAddr: string;
     sig: string;
 };
-type SocialEventData = (SocialEventDataSignature & {
+type SocialEventData = (SocialEventProtocolMetadata & SocialEventDataSignature & {
     dataType: SocialEventDataType.optimistic;
 } & {
     callData: SocialCallData<keyof typeof socialCallName>;
     content?: Partial<IpfsContent<keyof typeof ipfsContentSection>>;
-}) | (SocialEventDataSignature & {
+}) | (SocialEventProtocolMetadata & SocialEventDataSignature & {
     dataType: SocialEventDataType.persistent;
 } & {
     eventData: SocialOnChainEventData<keyof typeof socialEventName> | null;
     callData: SocialCallData<keyof typeof socialCallName>;
-}) | (SocialEventDataSignature & {
+}) | (SocialEventProtocolMetadata & SocialEventDataSignature & {
     dataType: SocialEventDataType.offChain;
 } & {
     callData: SocialCallData<keyof typeof socialCallName>;
     content?: Partial<IpfsContent<keyof typeof ipfsContentSection>>;
 });
-type SocialEventDataApiInput = (SocialEventDataSignature & {
+type SocialEventDataApiInput = (SocialEventProtocolMetadata & SocialEventDataSignature & {
     dataType: SocialEventDataType.optimistic;
 } & {
     callData: SocialCallDataApiInput<keyof typeof socialCallName>;
     content?: string;
-}) | (SocialEventDataSignature & {
+}) | (SocialEventProtocolMetadata & SocialEventDataSignature & {
     dataType: SocialEventDataType.persistent;
 } & {
     eventData: SocialOnChainEventDataApiInput<keyof typeof socialEventName> | null;
     callData: SocialCallDataApiInput<keyof typeof socialCallName>;
-}) | (SocialEventDataSignature & {
+}) | (SocialEventProtocolMetadata & SocialEventDataSignature & {
     dataType: SocialEventDataType.offChain;
 } & {
     callData: SocialCallDataApiInput<keyof typeof socialCallName>;
     content?: string;
 });
-type SocialEventDataGeneric<T extends SocialEventDataType, C extends keyof SocialCallNameEnum, E extends keyof SocialEventNameEnum | undefined = undefined> = T extends SocialEventDataType.optimistic ? SocialEventDataSignature & {
+type SocialEventDataGeneric<T extends SocialEventDataType, C extends keyof SocialCallNameEnum, E extends keyof SocialEventNameEnum | undefined = undefined> = T extends SocialEventDataType.optimistic ? SocialEventProtocolMetadata & SocialEventDataSignature & {
     dataType: SocialEventDataType.optimistic;
     callData: SocialCallData<C>;
     content?: Partial<IpfsContent<keyof typeof ipfsContentSection>>;
-} : T extends SocialEventDataType.persistent ? SocialEventDataSignature & {
+} : T extends SocialEventDataType.persistent ? SocialEventProtocolMetadata & SocialEventDataSignature & {
     dataType: SocialEventDataType.persistent;
     eventData: E extends keyof SocialEventNameEnum ? SocialOnChainEventData<E> : never;
     callData: SocialCallData<C>;
-} : T extends SocialEventDataType.offChain ? SocialEventDataSignature & {
+} : T extends SocialEventDataType.offChain ? SocialEventProtocolMetadata & SocialEventDataSignature & {
     dataType: SocialEventDataType.offChain;
     callData: SocialCallData<C>;
     content?: Partial<IpfsContent<keyof typeof ipfsContentSection>>;
 } : never;
 
-export { AccountFollowedEventParsedParams, AccountUnfollowedEventParsedParams, AddProxyCallParsedArgs, ContentExtensionData, ContentExtensionId, ContentSrcDecorated, CreatePostCallParsedArgs, CreateSpaceCallParsedArgs, DataHubSubscriptionEventEnum, DomainMetaUpdatedEventParsedParams, DomainRegisteredEventParsedParams, EvmAddressLinkedToAccountEventParsedParams, EvmAddressUnlinkedFromAccountEventParsedParams, ExtensionPropertiesAll, FollowAccountCallParsedArgs, FollowPostCallParsedArgs, FollowSpaceCallParsedArgs, InReplyToKind, IpfsContent, IpfsContentSection, IpfsPostContentSummarized, IpfsSpaceContentSummarized, LinkEvmAddressCallParsedArgs, MovePostCallParsedArgs, PostContentWithInReplyTo, PostCreatedEventParsedParams, PostFollowedEventParsedParams, PostKind, PostMovedEventParsedParams, PostReactionCreateCallParsedArgs, PostReactionCreatedEventParsedParams, PostReactionDeleteCallParsedArgs, PostReactionDeletedEventParsedParams, PostReactionUpdateCallParsedArgs, PostReactionUpdatedEventParsedParams, PostTweetDetailsIPFS, PostUnfollowedEventParsedParams, PostUpdatedEventParsedParams, ProfileUpdatedEventParsedParams, ProxyAddedEventParsedParams, ProxyRemovedEventParsedParams, ReactionKind, RemoveProxyCallParsedArgs, SocialCallData, SocialCallDataApiInput, SocialCallDataArgs, SocialCallNameEnum, SocialEventData, SocialEventDataApiInput, SocialEventDataGeneric, SocialEventDataSignature, SocialEventDataType, SocialEventNameEnum, SocialEventProtVersion, SocialOnChainEventData, SocialOnChainEventDataApiInput, SocialOnChainEventDataParams, SocialOnChainEventMetadata, SpaceCreatedEventParsedParams, SpaceFollowedEventParsedParams, SpaceOwnershipTransferAcceptedEventParsedParams, SpaceOwnershipTransferCreatedEventParsedParams, SpacePermissionsScope, SpaceUnfollowedEventParsedParams, SpaceUpdatedEventParsedParams, SynthCreatePostTxFailedCallParsedArgs, SynthCreatePostTxRetryCallParsedArgs, SynthUpdatePostTxFailedCallParsedArgs, SynthUpdatePostTxRetryCallParsedArgs, UnfollowAccountCallParsedArgs, UnfollowPostCallParsedArgs, UnfollowSpaceCallParsedArgs, UnlinkEvmAddressCallParsedArgs, UpdatePostCallParsedArgs, UpdateSpaceCallParsedArgs, ipfsContentSection, socialCallName, socialEventName, socialEventProtVersion, supportedIpfsContentMap };
+export { AccountFollowedEventParsedParams, AccountUnfollowedEventParsedParams, AddProxyCallParsedArgs, ContentExtensionData, ContentExtensionId, ContentSrcDecorated, CreatePostCallParsedArgs, CreateSpaceCallParsedArgs, DataHubSubscriptionEventEnum, DomainMetaUpdatedEventParsedParams, DomainRegisteredEventParsedParams, EvmAddressLinkedToAccountEventParsedParams, EvmAddressUnlinkedFromAccountEventParsedParams, ExtensionPropertiesAll, FollowAccountCallParsedArgs, FollowPostCallParsedArgs, FollowSpaceCallParsedArgs, InReplyToKind, IpfsContent, IpfsContentSection, IpfsPostContentSummarized, IpfsSpaceContentSummarized, LinkEvmAddressCallParsedArgs, MovePostCallParsedArgs, PostContentWithInReplyTo, PostCreatedEventParsedParams, PostFollowedEventParsedParams, PostKind, PostMovedEventParsedParams, PostReactionCreateCallParsedArgs, PostReactionCreatedEventParsedParams, PostReactionDeleteCallParsedArgs, PostReactionDeletedEventParsedParams, PostReactionUpdateCallParsedArgs, PostReactionUpdatedEventParsedParams, PostTweetDetailsIPFS, PostUnfollowedEventParsedParams, PostUpdatedEventParsedParams, ProfileUpdatedEventParsedParams, ProxyAddedEventParsedParams, ProxyRemovedEventParsedParams, ReactionKind, RemoveProxyCallParsedArgs, SocialCallData, SocialCallDataApiInput, SocialCallDataArgs, SocialCallNameEnum, SocialEventData, SocialEventDataApiInput, SocialEventDataGeneric, SocialEventDataSignature, SocialEventDataType, SocialEventNameEnum, SocialEventProtVersion, SocialEventProtocolMetadata, SocialOnChainEventData, SocialOnChainEventDataApiInput, SocialOnChainEventDataParams, SocialOnChainEventMetadata, SpaceCreatedEventParsedParams, SpaceFollowedEventParsedParams, SpaceOwnershipTransferAcceptedEventParsedParams, SpaceOwnershipTransferCreatedEventParsedParams, SpacePermissionsScope, SpaceUnfollowedEventParsedParams, SpaceUpdatedEventParsedParams, SynthCreatePostTxFailedCallParsedArgs, SynthCreatePostTxRetryCallParsedArgs, SynthUpdatePostTxFailedCallParsedArgs, SynthUpdatePostTxRetryCallParsedArgs, UnfollowAccountCallParsedArgs, UnfollowPostCallParsedArgs, UnfollowSpaceCallParsedArgs, UnlinkEvmAddressCallParsedArgs, UpdatePostCallParsedArgs, UpdateSpaceCallParsedArgs, ipfsContentSection, socialCallName, socialEventName, socialEventProtVersion, supportedIpfsContentMap };
