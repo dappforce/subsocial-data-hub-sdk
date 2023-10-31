@@ -8,7 +8,7 @@
   "types": "dist/index.d.ts",
   "unpkg": "dist/index.global.js",
   "scripts": {
-    "build:dev": "rm -rf dist && tsup src/index.ts --format cjs,esm,iife --dts --minify && rm -rf ../data-hub-squid/src/dev-dependecies/data-hub-sdk/* && cp -r ./dist/ ../data-hub-squid/src/dev-dependecies/data-hub-sdk",
+    "build:dev": "rm -rf dist && tsup src/index.ts --format cjs,esm,iife --dts --minify",
     "build": "rm -rf dist && tsup src/index.ts --format cjs,esm,iife --dts --minify",
     "prepare": "yarn build",
     "publish:npm": "yarn build && npm publish --access public",
