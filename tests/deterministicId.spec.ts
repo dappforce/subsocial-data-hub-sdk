@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { getDeterministicId } from '../src';
+import { getDeterministicId } from '../src/utils';
 
 describe('DeterministicId Unit', () => {
   test('should return id', () => {

@@ -9,7 +9,7 @@
   "unpkg": "dist/index.global.js",
   "scripts": {
     "build:dev": "rm -rf dist && tsup src/index.ts --format cjs,esm,iife --dts --minify",
-    "build": "rm -rf dist && tsup src/index.ts --format cjs,esm,iife --dts --minify",
+    "build": "rm -rf dist && tsup --entry src/index.ts --entry src/utils/index.ts --format cjs,esm,iife --dts --minify",
     "prepare": "yarn build",
     "publish:npm": "yarn build && npm publish --access public",
     "test": "jest --verbose"
