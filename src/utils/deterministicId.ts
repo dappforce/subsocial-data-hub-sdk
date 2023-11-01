@@ -1,6 +1,6 @@
 import { blake2AsHex, decodeAddress } from '@polkadot/util-crypto';
 import { stringToU8a, u8aToHex } from '@polkadot/util';
-import { GetDeterministicIdInput } from '../types';
+import { GetDeterministicIdInput } from './types';
 
 export function getDeterministicId({
   uuid,
