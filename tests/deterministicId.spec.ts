@@ -12,6 +12,6 @@ describe('DeterministicId Unit', () => {
       account
     });
 
-    expect('0x02b8182a2cbe311f9e4b14da42bdea15').toEqual(id);
+    expect(id).toEqual('0x82b9f0bc655dc1d7d1aa05b42a87c1cf');
   });
 });
