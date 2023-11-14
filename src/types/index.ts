@@ -19,6 +19,7 @@ export * from './ipfs';
 export * from './common';
 export * from './contentExtension';
 export * from './subscription';
+export * from './identity';
 
 export enum SocialEventDataType {
   persistent = 'persistent',

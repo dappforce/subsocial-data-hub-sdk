@@ -50,7 +50,10 @@ export const socialCallName = {
   synth_create_post_tx_failed: 'synth_create_post_tx_failed',
   synth_create_post_tx_retry: 'synth_create_post_tx_retry',
   synth_update_post_tx_failed: 'synth_update_post_tx_failed',
-  synth_update_post_tx_retry: 'synth_update_post_tx_retry'
+  synth_update_post_tx_retry: 'synth_update_post_tx_retry',
+
+  synth_create_twitter_identity: 'synth_create_twitter_identity',
+  synth_delete_twitter_identity: 'synth_delete_twitter_identity'
 } as const;
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
@@ -196,6 +199,16 @@ export interface SynthUpdatePostTxRetryCallParsedArgs {
   timestamp: string;
 }
 
+export interface SynthSynthCreateTwitterIdentityCallParsedArgs {
+  userId: string;
+  substrateAddress: string;
+}
+
+export interface SynthSynthDeleteTwitterIdentityCallParsedArgs {
+  userId: string;
+  substrateAddress: string;
+}
+
 export type SocialCallNameEnum = typeof socialCallName;
 
 export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
@@ -231,6 +244,10 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? FollowAccountCallParsedArgs
     : E extends (typeof socialCallName)['unfollow_account']
     ? UnfollowAccountCallParsedArgs
+    : E extends (typeof socialCallName)['add_proxy']
+    ? AddProxyCallParsedArgs
+    : E extends (typeof socialCallName)['remove_proxy']
+    ? RemoveProxyCallParsedArgs
     : E extends (typeof socialCallName)['synth_create_post_tx_failed']
     ? SynthCreatePostTxFailedCallParsedArgs
     : E extends (typeof socialCallName)['synth_create_post_tx_retry']
@@ -239,10 +256,10 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthUpdatePostTxFailedCallParsedArgs
     : E extends (typeof socialCallName)['synth_update_post_tx_retry']
     ? SynthUpdatePostTxRetryCallParsedArgs
-    : E extends (typeof socialCallName)['add_proxy']
-    ? AddProxyCallParsedArgs
-    : E extends (typeof socialCallName)['remove_proxy']
-    ? RemoveProxyCallParsedArgs
+    : E extends (typeof socialCallName)['synth_create_twitter_identity']
+    ? SynthSynthCreateTwitterIdentityCallParsedArgs
+    : E extends (typeof socialCallName)['synth_delete_twitter_identity']
+    ? SynthSynthDeleteTwitterIdentityCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {

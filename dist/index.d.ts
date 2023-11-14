@@ -238,6 +238,8 @@ declare const socialCallName: {
     readonly synth_create_post_tx_retry: "synth_create_post_tx_retry";
     readonly synth_update_post_tx_failed: "synth_update_post_tx_failed";
     readonly synth_update_post_tx_retry: "synth_update_post_tx_retry";
+    readonly synth_create_twitter_identity: "synth_create_twitter_identity";
+    readonly synth_delete_twitter_identity: "synth_delete_twitter_identity";
 };
 interface CreatePostCallParsedArgs extends ContentSrcDecorated {
     forced: boolean;
@@ -364,8 +366,16 @@ interface SynthUpdatePostTxRetryCallParsedArgs {
     persistentId: string;
     timestamp: string;
 }
+interface SynthSynthCreateTwitterIdentityCallParsedArgs {
+    userId: string;
+    substrateAddress: string;
+}
+interface SynthSynthDeleteTwitterIdentityCallParsedArgs {
+    userId: string;
+    substrateAddress: string;
+}
 type SocialCallNameEnum = typeof socialCallName;
-type SocialCallDataArgs<E extends keyof typeof socialCallName> = E extends (typeof socialCallName)['create_post'] ? CreatePostCallParsedArgs : E extends (typeof socialCallName)['update_post'] ? UpdatePostCallParsedArgs : E extends (typeof socialCallName)['move_post'] ? MovePostCallParsedArgs : E extends (typeof socialCallName)['create_space'] ? CreateSpaceCallParsedArgs : E extends (typeof socialCallName)['update_space'] ? UpdateSpaceCallParsedArgs : E extends (typeof socialCallName)['create_post_reaction'] ? PostReactionCreateCallParsedArgs : E extends (typeof socialCallName)['update_post_reaction'] ? PostReactionUpdateCallParsedArgs : E extends (typeof socialCallName)['delete_post_reaction'] ? PostReactionDeleteCallParsedArgs : E extends (typeof socialCallName)['link_evm_address'] ? LinkEvmAddressCallParsedArgs : E extends (typeof socialCallName)['unlink_evm_address'] ? UnlinkEvmAddressCallParsedArgs : E extends (typeof socialCallName)['follow_post'] ? FollowPostCallParsedArgs : E extends (typeof socialCallName)['unfollow_post'] ? UnfollowPostCallParsedArgs : E extends (typeof socialCallName)['follow_space'] ? FollowSpaceCallParsedArgs : E extends (typeof socialCallName)['unfollow_space'] ? UnfollowSpaceCallParsedArgs : E extends (typeof socialCallName)['follow_account'] ? FollowAccountCallParsedArgs : E extends (typeof socialCallName)['unfollow_account'] ? UnfollowAccountCallParsedArgs : E extends (typeof socialCallName)['synth_create_post_tx_failed'] ? SynthCreatePostTxFailedCallParsedArgs : E extends (typeof socialCallName)['synth_create_post_tx_retry'] ? SynthCreatePostTxRetryCallParsedArgs : E extends (typeof socialCallName)['synth_update_post_tx_failed'] ? SynthUpdatePostTxFailedCallParsedArgs : E extends (typeof socialCallName)['synth_update_post_tx_retry'] ? SynthUpdatePostTxRetryCallParsedArgs : E extends (typeof socialCallName)['add_proxy'] ? AddProxyCallParsedArgs : E extends (typeof socialCallName)['remove_proxy'] ? RemoveProxyCallParsedArgs : undefined;
+type SocialCallDataArgs<E extends keyof typeof socialCallName> = E extends (typeof socialCallName)['create_post'] ? CreatePostCallParsedArgs : E extends (typeof socialCallName)['update_post'] ? UpdatePostCallParsedArgs : E extends (typeof socialCallName)['move_post'] ? MovePostCallParsedArgs : E extends (typeof socialCallName)['create_space'] ? CreateSpaceCallParsedArgs : E extends (typeof socialCallName)['update_space'] ? UpdateSpaceCallParsedArgs : E extends (typeof socialCallName)['create_post_reaction'] ? PostReactionCreateCallParsedArgs : E extends (typeof socialCallName)['update_post_reaction'] ? PostReactionUpdateCallParsedArgs : E extends (typeof socialCallName)['delete_post_reaction'] ? PostReactionDeleteCallParsedArgs : E extends (typeof socialCallName)['link_evm_address'] ? LinkEvmAddressCallParsedArgs : E extends (typeof socialCallName)['unlink_evm_address'] ? UnlinkEvmAddressCallParsedArgs : E extends (typeof socialCallName)['follow_post'] ? FollowPostCallParsedArgs : E extends (typeof socialCallName)['unfollow_post'] ? UnfollowPostCallParsedArgs : E extends (typeof socialCallName)['follow_space'] ? FollowSpaceCallParsedArgs : E extends (typeof socialCallName)['unfollow_space'] ? UnfollowSpaceCallParsedArgs : E extends (typeof socialCallName)['follow_account'] ? FollowAccountCallParsedArgs : E extends (typeof socialCallName)['unfollow_account'] ? UnfollowAccountCallParsedArgs : E extends (typeof socialCallName)['add_proxy'] ? AddProxyCallParsedArgs : E extends (typeof socialCallName)['remove_proxy'] ? RemoveProxyCallParsedArgs : E extends (typeof socialCallName)['synth_create_post_tx_failed'] ? SynthCreatePostTxFailedCallParsedArgs : E extends (typeof socialCallName)['synth_create_post_tx_retry'] ? SynthCreatePostTxRetryCallParsedArgs : E extends (typeof socialCallName)['synth_update_post_tx_failed'] ? SynthUpdatePostTxFailedCallParsedArgs : E extends (typeof socialCallName)['synth_update_post_tx_retry'] ? SynthUpdatePostTxRetryCallParsedArgs : E extends (typeof socialCallName)['synth_create_twitter_identity'] ? SynthSynthCreateTwitterIdentityCallParsedArgs : E extends (typeof socialCallName)['synth_delete_twitter_identity'] ? SynthSynthDeleteTwitterIdentityCallParsedArgs : undefined;
 type SocialCallData<C extends keyof typeof socialCallName> = {
     name: C;
     signer: string;
@@ -497,24 +507,19 @@ type IpfsContent<T extends keyof typeof ipfsContentSection> = T extends typeof i
 declare const supportedIpfsContentMap: Map<"post" | "space", Set<string>>;
 
 declare enum DataHubSubscriptionEventEnum {
-    POST_CREATED_OPTIMISTIC = "POST_CREATED_OPTIMISTIC",
-    POST_CREATED_PERSISTENT = "POST_CREATED_PERSISTENT",
-    POST_UPDATED_OPTIMISTIC = "POST_UPDATED_OPTIMISTIC",
-    POST_UPDATED_PERSISTENT = "POST_UPDATED_PERSISTENT",
-    POST_FOLLOWED_OPTIMISTIC = "POST_FOLLOWED_OPTIMISTIC",
-    POST_FOLLOWED_PERSISTENT = "POST_FOLLOWED_PERSISTENT",
-    POST_UNFOLLOWED_OPTIMISTIC = "POST_UNFOLLOWED_OPTIMISTIC",
-    POST_UNFOLLOWED_PERSISTENT = "POST_UNFOLLOWED_PERSISTENT",
-    EVM_ADDRESS_LINKED_TO_ACCOUNT_OPTIMISTIC = "EVM_ADDRESS_LINKED_TO_ACCOUNT",
-    EVM_ADDRESS_LINKED_TO_ACCOUNT_PERSISTENT = "EVM_ADDRESS_LINKED_TO_ACCOUNT",
-    EVM_ADDRESS_UNLINKED_TO_ACCOUNT_OPTIMISTIC = "EVM_ADDRESS_UNLINKED_TO_ACCOUNT",
-    EVM_ADDRESS_UNLINKED_TO_ACCOUNT_PERSISTENT = "EVM_ADDRESS_UNLINKED_TO_ACCOUNT",
     POST_CREATED = "POST_CREATED",
     POST_STATE_UPDATED = "POST_STATE_UPDATED",
     POST_FOLLOWED = "POST_FOLLOWED",
     POST_FOLLOW_STATE_UPDATED = "POST_FOLLOW_STATE_UPDATED",
     EVM_ADDRESS_LINKED_TO_ACCOUNT = "EVM_ADDRESS_LINKED_TO_ACCOUNT",
-    EVM_ADDRESS_LINK_TO_ACCOUNT_STATE_UPDATED = "EVM_ADDRESS_LINK_TO_ACCOUNT_STATE_UPDATED"
+    EVM_ADDRESS_LINK_TO_ACCOUNT_STATE_UPDATED = "EVM_ADDRESS_LINK_TO_ACCOUNT_STATE_UPDATED",
+    TWITTER_IDENTITY_CREATED = "TWITTER_IDENTITY_CREATED",
+    TWITTER_IDENTITY_STATE_UPDATED = "TWITTER_IDENTITY_STATE_UPDATED"
+}
+
+declare enum IdentityProvider {
+    TWITTER = "TWITTER",
+    GMAIL = "GMAIL"
 }
 
 declare enum SocialEventDataType {
@@ -575,4 +580,4 @@ type SocialEventDataGeneric<T extends SocialEventDataType, C extends keyof Socia
     content?: Partial<IpfsContent<keyof typeof ipfsContentSection>>;
 } : never;
 
-export { AccountFollowedEventParsedParams, AccountUnfollowedEventParsedParams, AddProxyCallParsedArgs, ContentExtensionData, ContentExtensionId, ContentSrcDecorated, CreatePostCallParsedArgs, CreateSpaceCallParsedArgs, DataHubSubscriptionEventEnum, DomainMetaUpdatedEventParsedParams, DomainRegisteredEventParsedParams, EvmAddressLinkedToAccountEventParsedParams, EvmAddressUnlinkedFromAccountEventParsedParams, ExtensionPropertiesAll, FollowAccountCallParsedArgs, FollowPostCallParsedArgs, FollowSpaceCallParsedArgs, InReplyToKind, IpfsContent, IpfsContentSection, IpfsPostContentSummarized, IpfsSpaceContentSummarized, LinkEvmAddressCallParsedArgs, MovePostCallParsedArgs, PostContentWithInReplyTo, PostCreatedEventParsedParams, PostFollowedEventParsedParams, PostKind, PostMovedEventParsedParams, PostReactionCreateCallParsedArgs, PostReactionCreatedEventParsedParams, PostReactionDeleteCallParsedArgs, PostReactionDeletedEventParsedParams, PostReactionUpdateCallParsedArgs, PostReactionUpdatedEventParsedParams, PostTweetDetailsIPFS, PostUnfollowedEventParsedParams, PostUpdatedEventParsedParams, ProfileUpdatedEventParsedParams, ProxyAddedEventParsedParams, ProxyRemovedEventParsedParams, ReactionKind, RemoveProxyCallParsedArgs, SocialCallData, SocialCallDataApiInput, SocialCallDataArgs, SocialCallNameEnum, SocialEventData, SocialEventDataApiInput, SocialEventDataGeneric, SocialEventDataSignature, SocialEventDataType, SocialEventNameEnum, SocialEventProtVersion, SocialEventProtocolMetadata, SocialOnChainEventData, SocialOnChainEventDataApiInput, SocialOnChainEventDataParams, SocialOnChainEventMetadata, SpaceCreatedEventParsedParams, SpaceFollowedEventParsedParams, SpaceOwnershipTransferAcceptedEventParsedParams, SpaceOwnershipTransferCreatedEventParsedParams, SpacePermissionsScope, SpaceUnfollowedEventParsedParams, SpaceUpdatedEventParsedParams, SynthCreatePostTxFailedCallParsedArgs, SynthCreatePostTxRetryCallParsedArgs, SynthUpdatePostTxFailedCallParsedArgs, SynthUpdatePostTxRetryCallParsedArgs, UnfollowAccountCallParsedArgs, UnfollowPostCallParsedArgs, UnfollowSpaceCallParsedArgs, UnlinkEvmAddressCallParsedArgs, UpdatePostCallParsedArgs, UpdateSpaceCallParsedArgs, ipfsContentSection, socialCallName, socialEventName, socialEventProtVersion, supportedIpfsContentMap };
+export { AccountFollowedEventParsedParams, AccountUnfollowedEventParsedParams, AddProxyCallParsedArgs, ContentExtensionData, ContentExtensionId, ContentSrcDecorated, CreatePostCallParsedArgs, CreateSpaceCallParsedArgs, DataHubSubscriptionEventEnum, DomainMetaUpdatedEventParsedParams, DomainRegisteredEventParsedParams, EvmAddressLinkedToAccountEventParsedParams, EvmAddressUnlinkedFromAccountEventParsedParams, ExtensionPropertiesAll, FollowAccountCallParsedArgs, FollowPostCallParsedArgs, FollowSpaceCallParsedArgs, IdentityProvider, InReplyToKind, IpfsContent, IpfsContentSection, IpfsPostContentSummarized, IpfsSpaceContentSummarized, LinkEvmAddressCallParsedArgs, MovePostCallParsedArgs, PostContentWithInReplyTo, PostCreatedEventParsedParams, PostFollowedEventParsedParams, PostKind, PostMovedEventParsedParams, PostReactionCreateCallParsedArgs, PostReactionCreatedEventParsedParams, PostReactionDeleteCallParsedArgs, PostReactionDeletedEventParsedParams, PostReactionUpdateCallParsedArgs, PostReactionUpdatedEventParsedParams, PostTweetDetailsIPFS, PostUnfollowedEventParsedParams, PostUpdatedEventParsedParams, ProfileUpdatedEventParsedParams, ProxyAddedEventParsedParams, ProxyRemovedEventParsedParams, ReactionKind, RemoveProxyCallParsedArgs, SocialCallData, SocialCallDataApiInput, SocialCallDataArgs, SocialCallNameEnum, SocialEventData, SocialEventDataApiInput, SocialEventDataGeneric, SocialEventDataSignature, SocialEventDataType, SocialEventNameEnum, SocialEventProtVersion, SocialEventProtocolMetadata, SocialOnChainEventData, SocialOnChainEventDataApiInput, SocialOnChainEventDataParams, SocialOnChainEventMetadata, SpaceCreatedEventParsedParams, SpaceFollowedEventParsedParams, SpaceOwnershipTransferAcceptedEventParsedParams, SpaceOwnershipTransferCreatedEventParsedParams, SpacePermissionsScope, SpaceUnfollowedEventParsedParams, SpaceUpdatedEventParsedParams, SynthCreatePostTxFailedCallParsedArgs, SynthCreatePostTxRetryCallParsedArgs, SynthSynthCreateTwitterIdentityCallParsedArgs, SynthSynthDeleteTwitterIdentityCallParsedArgs, SynthUpdatePostTxFailedCallParsedArgs, SynthUpdatePostTxRetryCallParsedArgs, UnfollowAccountCallParsedArgs, UnfollowPostCallParsedArgs, UnfollowSpaceCallParsedArgs, UnlinkEvmAddressCallParsedArgs, UpdatePostCallParsedArgs, UpdateSpaceCallParsedArgs, ipfsContentSection, socialCallName, socialEventName, socialEventProtVersion, supportedIpfsContentMap };
