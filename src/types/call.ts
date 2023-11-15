@@ -4,6 +4,7 @@ import {
   ReactionKind,
   SpacePermissionsScope
 } from './common';
+import { IdentityProvider } from './identity';
 
 export const socialCallName = {
   create_post: 'create_post',
@@ -52,8 +53,8 @@ export const socialCallName = {
   synth_update_post_tx_failed: 'synth_update_post_tx_failed',
   synth_update_post_tx_retry: 'synth_update_post_tx_retry',
 
-  synth_create_twitter_identity: 'synth_create_twitter_identity',
-  synth_delete_twitter_identity: 'synth_delete_twitter_identity'
+  synth_create_linked_identity: 'synth_create_linked_identity',
+  synth_delete_linked_identity: 'synth_delete_linked_identity'
 } as const;
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
@@ -199,14 +200,14 @@ export interface SynthUpdatePostTxRetryCallParsedArgs {
   timestamp: string;
 }
 
-export interface SynthSynthCreateTwitterIdentityCallParsedArgs {
-  userId: string;
-  substrateAddress: string;
+export interface SynthCreateLinkedIdentityCallParsedArgs {
+  id: string;
+  provider: IdentityProvider;
 }
 
-export interface SynthSynthDeleteTwitterIdentityCallParsedArgs {
-  userId: string;
-  substrateAddress: string;
+export interface SynthDeleteLinkedIdentityCallParsedArgs {
+  id: string;
+  provider: IdentityProvider;
 }
 
 export type SocialCallNameEnum = typeof socialCallName;
@@ -256,10 +257,10 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthUpdatePostTxFailedCallParsedArgs
     : E extends (typeof socialCallName)['synth_update_post_tx_retry']
     ? SynthUpdatePostTxRetryCallParsedArgs
-    : E extends (typeof socialCallName)['synth_create_twitter_identity']
-    ? SynthSynthCreateTwitterIdentityCallParsedArgs
-    : E extends (typeof socialCallName)['synth_delete_twitter_identity']
-    ? SynthSynthDeleteTwitterIdentityCallParsedArgs
+    : E extends (typeof socialCallName)['synth_create_linked_identity']
+    ? SynthCreateLinkedIdentityCallParsedArgs
+    : E extends (typeof socialCallName)['synth_delete_linked_identity']
+    ? SynthDeleteLinkedIdentityCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {
