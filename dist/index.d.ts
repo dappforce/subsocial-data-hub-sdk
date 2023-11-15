@@ -519,7 +519,7 @@ declare enum DataHubSubscriptionEventEnum {
 
 declare enum IdentityProvider {
     TWITTER = "TWITTER",
-    GMAIL = "GMAIL"
+    EMAIL = "EMAIL"
 }
 
 declare enum SocialEventDataType {
