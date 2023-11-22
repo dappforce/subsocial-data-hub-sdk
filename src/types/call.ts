@@ -54,7 +54,21 @@ export const socialCallName = {
   synth_update_post_tx_retry: 'synth_update_post_tx_retry',
 
   synth_create_linked_identity: 'synth_create_linked_identity',
-  synth_delete_linked_identity: 'synth_delete_linked_identity'
+  synth_delete_linked_identity: 'synth_delete_linked_identity',
+
+  synth_moderation_init_moderator: 'synth_moderation_init_moderator',
+  synth_moderation_force_init_moderator:
+    'synth_moderation_force_init_moderator',
+  synth_moderation_add_context_to_organization:
+    'synth_moderation_add_context_to_organization',
+  synth_moderation_force_add_context_to_organization:
+    'synth_moderation_force_add_context_to_organization',
+  synth_moderation_block_resource: 'synth_moderation_block_resource',
+  synth_moderation_force_block_resource:
+    'synth_moderation_force_block_resource',
+  synth_moderation_unblock_resource: 'synth_moderation_unblock_resource',
+  synth_moderation_force_unblock_resource:
+    'synth_moderation_force_unblock_resource'
 } as const;
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
@@ -210,6 +224,58 @@ export interface SynthDeleteLinkedIdentityCallParsedArgs {
   provider: IdentityProvider;
 }
 
+export interface SynthModerationForceInitModeratorCallParsedArgs {
+  address: string;
+  withOrganization: boolean;
+  ctxPostIds?: string[];
+  ctxSpaceIds?: string[];
+}
+
+export interface SynthModerationInitModeratorCallParsedArgs {
+  withOrganization: boolean;
+  ctxPostIds?: string[];
+  ctxSpaceIds?: string[];
+}
+
+export interface SynthModerationAddContextToOrganizationCallParsedArgs {
+  organisationId: string;
+  ctxPostIds?: string[];
+  ctxSpaceIds?: string[];
+}
+
+export interface SynthModerationForceAddContextToOrganizationCallParsedArgs {
+  address: string;
+  organisationId: string;
+  ctxPostIds?: string[];
+  ctxSpaceIds?: string[];
+}
+
+export interface SynthModerationBlockResourceCallParsedArgs {
+  resourceId: string;
+  ctxPostIds?: string[];
+  ctxSpaceIds?: string[];
+}
+
+export interface SynthModerationForceBlockResourceCallParsedArgs {
+  address: string;
+  resourceId: string;
+  ctxPostIds?: string[];
+  ctxSpaceIds?: string[];
+}
+
+export interface SynthModerationUnblockResourceCallParsedArgs {
+  resourceId: string;
+  ctxPostIds?: string[];
+  ctxSpaceIds?: string[];
+}
+
+export interface SynthModerationForceUnblockResourceCallParsedArgs {
+  address: string;
+  resourceId: string;
+  ctxPostIds?: string[];
+  ctxSpaceIds?: string[];
+}
+
 export type SocialCallNameEnum = typeof socialCallName;
 
 export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
@@ -261,6 +327,22 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthCreateLinkedIdentityCallParsedArgs
     : E extends (typeof socialCallName)['synth_delete_linked_identity']
     ? SynthDeleteLinkedIdentityCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_init_moderator']
+    ? SynthModerationInitModeratorCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_add_context_to_organization']
+    ? SynthModerationAddContextToOrganizationCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_block_resource']
+    ? SynthModerationBlockResourceCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_unblock_resource']
+    ? SynthModerationUnblockResourceCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_force_init_moderator']
+    ? SynthModerationForceInitModeratorCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_force_add_context_to_organization']
+    ? SynthModerationForceAddContextToOrganizationCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_force_block_resource']
+    ? SynthModerationForceBlockResourceCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_force_unblock_resource']
+    ? SynthModerationForceUnblockResourceCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {
