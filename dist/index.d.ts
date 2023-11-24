@@ -402,12 +402,14 @@ interface SynthModerationInitModeratorCallParsedArgs {
 }
 interface SynthModerationAddDefaultCtxToModeratorCallParsedArgs {
     moderatorId: string;
+    organizationIds: '*' | string[];
     ctxPostIds?: string[];
     ctxSpaceIds?: string[];
 }
 interface SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs {
     address: string;
     moderatorId: string;
+    organizationIds: '*' | string[];
     ctxPostIds?: string[];
     ctxSpaceIds?: string[];
 }

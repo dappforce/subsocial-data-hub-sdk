@@ -245,6 +245,7 @@ export interface SynthModerationInitModeratorCallParsedArgs {
 
 export interface SynthModerationAddDefaultCtxToModeratorCallParsedArgs {
   moderatorId: string;
+  organizationIds: '*' | string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
@@ -252,6 +253,7 @@ export interface SynthModerationAddDefaultCtxToModeratorCallParsedArgs {
 export interface SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs {
   address: string;
   moderatorId: string;
+  organizationIds: '*' | string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
