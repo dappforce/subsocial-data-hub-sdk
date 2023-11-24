@@ -273,6 +273,7 @@ export interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
 
 export interface SynthModerationBlockResourceCallParsedArgs {
   resourceId: string;
+  organizationIds: '*' | string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
@@ -280,12 +281,14 @@ export interface SynthModerationBlockResourceCallParsedArgs {
 export interface SynthModerationForceBlockResourceCallParsedArgs {
   address: string;
   resourceId: string;
+  organizationIds: '*' | string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
 
 export interface SynthModerationUnblockResourceCallParsedArgs {
   resourceId: string;
+  organizationIds: '*' | string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
@@ -293,6 +296,7 @@ export interface SynthModerationUnblockResourceCallParsedArgs {
 export interface SynthModerationForceUnblockResourceCallParsedArgs {
   address: string;
   resourceId: string;
+  organizationIds: '*' | string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
