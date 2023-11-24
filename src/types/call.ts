@@ -59,10 +59,16 @@ export const socialCallName = {
   synth_moderation_init_moderator: 'synth_moderation_init_moderator',
   synth_moderation_force_init_moderator:
     'synth_moderation_force_init_moderator',
-  synth_moderation_add_context_to_organization:
-    'synth_moderation_add_context_to_organization',
-  synth_moderation_force_add_context_to_organization:
-    'synth_moderation_force_add_context_to_organization',
+
+  synth_moderation_add_default_ctx_to_moderator:
+    'synth_moderation_add_default_ctx_to_moderator',
+  synth_moderation_force_add_default_ctx_to_moderator:
+    'synth_moderation_force_add_default_ctx_to_moderator',
+
+  synth_moderation_add_ctx_to_organization:
+    'synth_moderation_add_ctx_to_organization',
+  synth_moderation_force_add_ctx_to_organization:
+    'synth_moderation_force_add_ctx_to_organization',
   synth_moderation_block_resource: 'synth_moderation_block_resource',
   synth_moderation_force_block_resource:
     'synth_moderation_force_block_resource',
@@ -237,13 +243,26 @@ export interface SynthModerationInitModeratorCallParsedArgs {
   ctxSpaceIds?: string[];
 }
 
-export interface SynthModerationAddContextToOrganizationCallParsedArgs {
+export interface SynthModerationAddDefaultCtxToModeratorCallParsedArgs {
+  moderatorId: string;
+  ctxPostIds?: string[];
+  ctxSpaceIds?: string[];
+}
+
+export interface SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs {
+  address: string;
+  moderatorId: string;
+  ctxPostIds?: string[];
+  ctxSpaceIds?: string[];
+}
+
+export interface SynthModerationAddCtxToOrganizationCallParsedArgs {
   organisationIds: string;
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
 
-export interface SynthModerationForceAddContextToOrganizationCallParsedArgs {
+export interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
   address: string;
   organisationIds: string;
   ctxPostIds?: string[];
@@ -329,16 +348,20 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthDeleteLinkedIdentityCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_init_moderator']
     ? SynthModerationInitModeratorCallParsedArgs
-    : E extends (typeof socialCallName)['synth_moderation_add_context_to_organization']
-    ? SynthModerationAddContextToOrganizationCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_add_ctx_to_organization']
+    ? SynthModerationAddCtxToOrganizationCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_block_resource']
     ? SynthModerationBlockResourceCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_unblock_resource']
     ? SynthModerationUnblockResourceCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_force_init_moderator']
     ? SynthModerationForceInitModeratorCallParsedArgs
-    : E extends (typeof socialCallName)['synth_moderation_force_add_context_to_organization']
-    ? SynthModerationForceAddContextToOrganizationCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_force_add_ctx_to_organization']
+    ? SynthModerationForceAddCtxToOrganizationCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_add_default_ctx_to_moderator']
+    ? SynthModerationAddDefaultCtxToModeratorCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_force_add_default_ctx_to_moderator']
+    ? SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_force_block_resource']
     ? SynthModerationForceBlockResourceCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_force_unblock_resource']
