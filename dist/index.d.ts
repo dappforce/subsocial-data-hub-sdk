@@ -412,13 +412,13 @@ interface SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs {
     ctxSpaceIds?: string[];
 }
 interface SynthModerationAddCtxToOrganizationCallParsedArgs {
-    organisationIds: string;
+    organisationId: string;
     ctxPostIds?: string[];
     ctxSpaceIds?: string[];
 }
 interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
     address: string;
-    organisationIds: string;
+    organisationId: string;
     ctxPostIds?: string[];
     ctxSpaceIds?: string[];
 }
