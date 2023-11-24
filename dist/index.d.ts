@@ -399,13 +399,13 @@ interface SynthModerationInitModeratorCallParsedArgs {
     ctxSpaceIds?: string[];
 }
 interface SynthModerationAddContextToOrganizationCallParsedArgs {
-    organisationId: string;
+    organisationIds: string;
     ctxPostIds?: string[];
     ctxSpaceIds?: string[];
 }
 interface SynthModerationForceAddContextToOrganizationCallParsedArgs {
     address: string;
-    organisationId: string;
+    organisationIds: string;
     ctxPostIds?: string[];
     ctxSpaceIds?: string[];
 }

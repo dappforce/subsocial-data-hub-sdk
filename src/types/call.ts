@@ -238,14 +238,14 @@ export interface SynthModerationInitModeratorCallParsedArgs {
 }
 
 export interface SynthModerationAddContextToOrganizationCallParsedArgs {
-  organisationId: string;
+  organisationIds: string;
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
 
 export interface SynthModerationForceAddContextToOrganizationCallParsedArgs {
   address: string;
-  organisationId: string;
+  organisationIds: string;
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
