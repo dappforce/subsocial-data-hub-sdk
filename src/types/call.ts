@@ -274,7 +274,6 @@ export interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
 export interface SynthModerationBlockResourceCallParsedArgs {
   resourceId: string;
   reasonId: string;
-  organizationIds: '*' | string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
@@ -283,7 +282,6 @@ export interface SynthModerationForceBlockResourceCallParsedArgs {
   address: string;
   resourceId: string;
   reasonId: string;
-  organizationIds: '*' | string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
