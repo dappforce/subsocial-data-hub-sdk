@@ -245,7 +245,7 @@ export interface SynthModerationInitModeratorCallParsedArgs {
 
 export interface SynthModerationAddDefaultCtxToModeratorCallParsedArgs {
   moderatorId: string;
-  organizationIds: '*' | string[];
+  organizationIds: string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
@@ -253,20 +253,20 @@ export interface SynthModerationAddDefaultCtxToModeratorCallParsedArgs {
 export interface SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs {
   address: string;
   moderatorId: string;
-  organizationIds: '*' | string[];
+  organizationIds: string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
 
 export interface SynthModerationAddCtxToOrganizationCallParsedArgs {
-  organisationId: string;
+  organizationId: string;
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
 
 export interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
   address: string;
-  organisationId: string;
+  organizationId: string;
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
@@ -288,7 +288,6 @@ export interface SynthModerationForceBlockResourceCallParsedArgs {
 
 export interface SynthModerationUnblockResourceCallParsedArgs {
   resourceId: string;
-  organizationIds: '*' | string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
@@ -296,7 +295,6 @@ export interface SynthModerationUnblockResourceCallParsedArgs {
 export interface SynthModerationForceUnblockResourceCallParsedArgs {
   address: string;
   resourceId: string;
-  organizationIds: '*' | string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
 }
