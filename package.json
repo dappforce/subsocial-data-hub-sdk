@@ -1,6 +1,6 @@
 {
   "name": "@subsocial/data-hub-sdk",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "SDK for communication with Social DataHub service",
   "license": "GPL-3.0-only",
   "main": "dist/index.js",

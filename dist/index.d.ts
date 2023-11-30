@@ -196,9 +196,90 @@ type SocialOnChainEventDataApiInput<E extends keyof typeof socialEventName> = {
     params: string;
 };
 
+/**
+ * === Common calls ===
+ */
+interface SynthModerationInitModeratorCallParsedArgs {
+    withOrganization: boolean;
+    ctxPostIds?: string[];
+    ctxSpaceIds?: string[];
+}
+interface SynthModerationAddDefaultCtxToModeratorCallParsedArgs {
+    moderatorId: string;
+    organizationIds: string[];
+    ctxPostIds?: string[];
+    ctxSpaceIds?: string[];
+    ctxAppIds?: string[];
+}
+interface SynthModerationAddCtxToOrganizationCallParsedArgs {
+    organizationId: string;
+    ctxPostIds?: string[];
+    ctxSpaceIds?: string[];
+}
+interface SynthModerationBlockResourceCallParsedArgs {
+    resourceId: string;
+    reasonId: string;
+    ctxPostIds?: string[];
+    ctxSpaceIds?: string[];
+    ctxAppIds?: string[];
+}
+interface SynthModerationUnblockResourceCallParsedArgs {
+    resourceId: string;
+    ctxPostIds?: string[];
+    ctxSpaceIds?: string[];
+    ctxAppIds?: string[];
+}
+/**
+ * === Force calls ===
+ */
+interface SynthModerationForceInitModeratorCallParsedArgs {
+    address: string;
+    withOrganization: boolean;
+    ctxPostIds?: string[];
+    ctxSpaceIds?: string[];
+}
+interface SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs {
+    address: string;
+    moderatorId: string;
+    organizationIds: string[];
+    ctxPostIds?: string[];
+    ctxSpaceIds?: string[];
+    ctxAppIds?: string[];
+}
+interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
+    address: string;
+    organizationId: string;
+    ctxPostIds?: string[];
+    ctxSpaceIds?: string[];
+}
+interface SynthModerationForceBlockResourceCallParsedArgs {
+    address: string;
+    resourceId: string;
+    reasonId: string;
+    ctxPostIds?: string[];
+    ctxSpaceIds?: string[];
+    ctxAppIds?: string[];
+}
+interface SynthModerationForceUnblockResourceCallParsedArgs {
+    address: string;
+    resourceId: string;
+    ctxPostIds?: string[];
+    ctxSpaceIds?: string[];
+    ctxAppIds?: string[];
+}
+
 declare enum IdentityProvider {
     TWITTER = "TWITTER",
     EMAIL = "EMAIL"
+}
+
+interface SynthCreateLinkedIdentityCallParsedArgs {
+    id: string;
+    provider: IdentityProvider;
+}
+interface SynthDeleteLinkedIdentityCallParsedArgs {
+    id: string;
+    provider: IdentityProvider;
 }
 
 declare const socialCallName: {
@@ -256,6 +337,7 @@ declare const socialCallName: {
     readonly synth_moderation_unblock_resource: "synth_moderation_unblock_resource";
     readonly synth_moderation_force_unblock_resource: "synth_moderation_force_unblock_resource";
 };
+
 interface CreatePostCallParsedArgs extends ContentSrcDecorated {
     forced: boolean;
     forcedData?: {
@@ -380,73 +462,6 @@ interface SynthUpdatePostTxRetryCallParsedArgs {
     optimisticId?: string;
     persistentId: string;
     timestamp: string;
-}
-interface SynthCreateLinkedIdentityCallParsedArgs {
-    id: string;
-    provider: IdentityProvider;
-}
-interface SynthDeleteLinkedIdentityCallParsedArgs {
-    id: string;
-    provider: IdentityProvider;
-}
-interface SynthModerationForceInitModeratorCallParsedArgs {
-    address: string;
-    withOrganization: boolean;
-    ctxPostIds?: string[];
-    ctxSpaceIds?: string[];
-}
-interface SynthModerationInitModeratorCallParsedArgs {
-    withOrganization: boolean;
-    ctxPostIds?: string[];
-    ctxSpaceIds?: string[];
-}
-interface SynthModerationAddDefaultCtxToModeratorCallParsedArgs {
-    moderatorId: string;
-    organizationIds: string[];
-    ctxPostIds?: string[];
-    ctxSpaceIds?: string[];
-}
-interface SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs {
-    address: string;
-    moderatorId: string;
-    organizationIds: string[];
-    ctxPostIds?: string[];
-    ctxSpaceIds?: string[];
-}
-interface SynthModerationAddCtxToOrganizationCallParsedArgs {
-    organizationId: string;
-    ctxPostIds?: string[];
-    ctxSpaceIds?: string[];
-}
-interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
-    address: string;
-    organizationId: string;
-    ctxPostIds?: string[];
-    ctxSpaceIds?: string[];
-}
-interface SynthModerationBlockResourceCallParsedArgs {
-    resourceId: string;
-    reasonId: string;
-    ctxPostIds?: string[];
-    ctxSpaceIds?: string[];
-}
-interface SynthModerationForceBlockResourceCallParsedArgs {
-    address: string;
-    resourceId: string;
-    reasonId: string;
-    ctxPostIds?: string[];
-    ctxSpaceIds?: string[];
-}
-interface SynthModerationUnblockResourceCallParsedArgs {
-    resourceId: string;
-    ctxPostIds?: string[];
-    ctxSpaceIds?: string[];
-}
-interface SynthModerationForceUnblockResourceCallParsedArgs {
-    address: string;
-    resourceId: string;
-    ctxPostIds?: string[];
-    ctxSpaceIds?: string[];
 }
 type SocialCallNameEnum = typeof socialCallName;
 type SocialCallDataArgs<E extends keyof typeof socialCallName> = E extends (typeof socialCallName)['create_post'] ? CreatePostCallParsedArgs : E extends (typeof socialCallName)['update_post'] ? UpdatePostCallParsedArgs : E extends (typeof socialCallName)['move_post'] ? MovePostCallParsedArgs : E extends (typeof socialCallName)['create_space'] ? CreateSpaceCallParsedArgs : E extends (typeof socialCallName)['update_space'] ? UpdateSpaceCallParsedArgs : E extends (typeof socialCallName)['create_post_reaction'] ? PostReactionCreateCallParsedArgs : E extends (typeof socialCallName)['update_post_reaction'] ? PostReactionUpdateCallParsedArgs : E extends (typeof socialCallName)['delete_post_reaction'] ? PostReactionDeleteCallParsedArgs : E extends (typeof socialCallName)['link_evm_address'] ? LinkEvmAddressCallParsedArgs : E extends (typeof socialCallName)['unlink_evm_address'] ? UnlinkEvmAddressCallParsedArgs : E extends (typeof socialCallName)['follow_post'] ? FollowPostCallParsedArgs : E extends (typeof socialCallName)['unfollow_post'] ? UnfollowPostCallParsedArgs : E extends (typeof socialCallName)['follow_space'] ? FollowSpaceCallParsedArgs : E extends (typeof socialCallName)['unfollow_space'] ? UnfollowSpaceCallParsedArgs : E extends (typeof socialCallName)['follow_account'] ? FollowAccountCallParsedArgs : E extends (typeof socialCallName)['unfollow_account'] ? UnfollowAccountCallParsedArgs : E extends (typeof socialCallName)['add_proxy'] ? AddProxyCallParsedArgs : E extends (typeof socialCallName)['remove_proxy'] ? RemoveProxyCallParsedArgs : E extends (typeof socialCallName)['synth_create_post_tx_failed'] ? SynthCreatePostTxFailedCallParsedArgs : E extends (typeof socialCallName)['synth_create_post_tx_retry'] ? SynthCreatePostTxRetryCallParsedArgs : E extends (typeof socialCallName)['synth_update_post_tx_failed'] ? SynthUpdatePostTxFailedCallParsedArgs : E extends (typeof socialCallName)['synth_update_post_tx_retry'] ? SynthUpdatePostTxRetryCallParsedArgs : E extends (typeof socialCallName)['synth_create_linked_identity'] ? SynthCreateLinkedIdentityCallParsedArgs : E extends (typeof socialCallName)['synth_delete_linked_identity'] ? SynthDeleteLinkedIdentityCallParsedArgs : E extends (typeof socialCallName)['synth_moderation_init_moderator'] ? SynthModerationInitModeratorCallParsedArgs : E extends (typeof socialCallName)['synth_moderation_add_ctx_to_organization'] ? SynthModerationAddCtxToOrganizationCallParsedArgs : E extends (typeof socialCallName)['synth_moderation_block_resource'] ? SynthModerationBlockResourceCallParsedArgs : E extends (typeof socialCallName)['synth_moderation_unblock_resource'] ? SynthModerationUnblockResourceCallParsedArgs : E extends (typeof socialCallName)['synth_moderation_force_init_moderator'] ? SynthModerationForceInitModeratorCallParsedArgs : E extends (typeof socialCallName)['synth_moderation_force_add_ctx_to_organization'] ? SynthModerationForceAddCtxToOrganizationCallParsedArgs : E extends (typeof socialCallName)['synth_moderation_add_default_ctx_to_moderator'] ? SynthModerationAddDefaultCtxToModeratorCallParsedArgs : E extends (typeof socialCallName)['synth_moderation_force_add_default_ctx_to_moderator'] ? SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs : E extends (typeof socialCallName)['synth_moderation_force_block_resource'] ? SynthModerationForceBlockResourceCallParsedArgs : E extends (typeof socialCallName)['synth_moderation_force_unblock_resource'] ? SynthModerationForceUnblockResourceCallParsedArgs : undefined;
