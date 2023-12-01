@@ -3,3 +3,10 @@ export enum ModerationResourceType {
   CID = 'CID',
   ADDRESS = 'ADDRESS'
 }
+
+export enum ModeratorRole {
+  owner = 'owner',
+  admin = 'admin',
+  moderator = 'moderator',
+  spectator = 'spectator'
+}
