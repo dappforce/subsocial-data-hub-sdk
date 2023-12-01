@@ -5,8 +5,8 @@ export enum ModerationResourceType {
 }
 
 export enum ModeratorRole {
-  OWNER = 'OWNER',
-  ADMIN = 'ADMIN',
-  MODERATOR = 'MODERATOR',
-  SPECTATOR = 'SPECTATOR'
+  owner = 'owner',
+  admin = 'admin',
+  moderator = 'moderator',
+  spectator = 'spectator'
 }
