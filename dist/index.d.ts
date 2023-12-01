@@ -618,10 +618,10 @@ declare enum ModerationResourceType {
     ADDRESS = "ADDRESS"
 }
 declare enum ModeratorRole {
-    owner = "owner",
-    admin = "admin",
-    moderator = "moderator",
-    spectator = "spectator"
+    OWNER = "OWNER",
+    ADMIN = "ADMIN",
+    MODERATOR = "MODERATOR",
+    SPECTATOR = "SPECTATOR"
 }
 
 declare enum SocialEventDataType {
