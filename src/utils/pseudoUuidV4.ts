@@ -1,10 +1,4 @@
-type GetDeterministicIdInput = {
-    uuid: string;
-    timestamp: string;
-    account: string;
-};
-
-declare function getDeterministicId({ uuid, timestamp, account }: GetDeterministicIdInput): string;
+import * as crypto from 'node:crypto';
 
 /**
  * Generates a hash formatted similarly to a UUID version 4.
@@ -22,6 +16,20 @@ declare function getDeterministicId({ uuid, timestamp, account }: GetDeterminist
  * @returns {string} A string formatted in the UUID v4 style but generated from
  *                   the provided parameters.
  */
-declare function getPseudoUuidV4(predefinedStr: string, unixTimestamp: number): string;
+export function getPseudoUuidV4(
+  predefinedStr: string,
+  unixTimestamp: number
+): string {
+  let hash = crypto
+    .createHash('md5')
+    .update(`${predefinedStr}${unixTimestamp}`)
+    .digest('hex');
 
-export { GetDeterministicIdInput, getDeterministicId, getPseudoUuidV4 };
+  hash = hash.substring(0, 12) + '4' + hash.substring(13);
+  hash = hash.substring(0, 16) + 'A' + hash.substring(17);
+
+  return `${hash.substring(0, 8)}-${hash.substring(8, 12)}-${hash.substring(
+    12,
+    16
+  )}-${hash.substring(16, 20)}-${hash.substring(20, 32)}`;
+}
