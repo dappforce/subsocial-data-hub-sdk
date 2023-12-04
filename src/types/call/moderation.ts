@@ -72,6 +72,9 @@ export interface SynthModerationForceAddOrganizationModeratorCallParsedArgs {
   organizationOwnerSubstrateAddress?: string;
   moderatorSubstrateAddress?: string;
   role: ModeratorRole;
+  defaultCtxPostIds?: string[];
+  defaultCtxSpaceIds?: string[];
+  defaultCtxAppIds?: string[];
 }
 
 export interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
