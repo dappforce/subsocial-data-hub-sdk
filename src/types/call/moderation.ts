@@ -1,6 +1,7 @@
 /**
  * === Common calls ===
  */
+import { ModeratorRole } from '../moderation';
 
 export interface SynthModerationInitModeratorCallParsedArgs {
   withOrganization: boolean;
@@ -56,11 +57,27 @@ export interface SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs {
   ctxAppIds?: string[];
 }
 
+export interface SynthModerationForceInitOrganizationCallParsedArgs {
+  ownerAccountAddress: string;
+  ctxPostIds?: string[];
+  ctxSpaceIds?: string[];
+  ctxAppIds?: string[];
+  name?: string;
+  description?: string;
+}
+
+export interface SynthModerationForceAddOrganizationModeratorCallParsedArgs {
+  organizationId: string;
+  moderatorId: string;
+  role: ModeratorRole;
+}
+
 export interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
   address: string;
   organizationId: string;
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
+  ctxAppIds?: string[];
 }
 
 export interface SynthModerationForceBlockResourceCallParsedArgs {

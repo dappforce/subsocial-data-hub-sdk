@@ -51,14 +51,13 @@ export const socialCallName = {
   synth_moderation_init_moderator: 'synth_moderation_init_moderator',
   synth_moderation_force_init_moderator:
     'synth_moderation_force_init_moderator',
-
   synth_moderation_add_default_ctx_to_moderator:
     'synth_moderation_add_default_ctx_to_moderator',
   synth_moderation_force_add_default_ctx_to_moderator:
     'synth_moderation_force_add_default_ctx_to_moderator',
-
   synth_moderation_add_ctx_to_organization:
     'synth_moderation_add_ctx_to_organization',
+
   synth_moderation_force_add_ctx_to_organization:
     'synth_moderation_force_add_ctx_to_organization',
   synth_moderation_block_resource: 'synth_moderation_block_resource',
@@ -66,5 +65,9 @@ export const socialCallName = {
     'synth_moderation_force_block_resource',
   synth_moderation_unblock_resource: 'synth_moderation_unblock_resource',
   synth_moderation_force_unblock_resource:
-    'synth_moderation_force_unblock_resource'
+    'synth_moderation_force_unblock_resource',
+  synth_moderation_force_init_organization:
+    'synth_moderation_force_init_organization',
+  synth_moderation_force_add_organization_moderator:
+    'synth_moderation_force_add_organization_moderator'
 } as const;

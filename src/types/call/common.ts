@@ -10,8 +10,10 @@ import {
   SynthModerationBlockResourceCallParsedArgs,
   SynthModerationForceAddCtxToOrganizationCallParsedArgs,
   SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs,
+  SynthModerationForceAddOrganizationModeratorCallParsedArgs,
   SynthModerationForceBlockResourceCallParsedArgs,
   SynthModerationForceInitModeratorCallParsedArgs,
+  SynthModerationForceInitOrganizationCallParsedArgs,
   SynthModerationForceUnblockResourceCallParsedArgs,
   SynthModerationInitModeratorCallParsedArgs,
   SynthModerationUnblockResourceCallParsedArgs
@@ -236,6 +238,10 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthModerationForceBlockResourceCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_force_unblock_resource']
     ? SynthModerationForceUnblockResourceCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_force_init_organization']
+    ? SynthModerationForceInitOrganizationCallParsedArgs
+    : E extends (typeof socialCallName)['synth_moderation_force_add_organization_moderator']
+    ? SynthModerationForceAddOrganizationModeratorCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {
