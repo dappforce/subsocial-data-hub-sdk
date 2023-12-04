@@ -273,6 +273,9 @@ interface SynthModerationForceAddOrganizationModeratorCallParsedArgs {
     organizationOwnerSubstrateAddress?: string;
     moderatorSubstrateAddress?: string;
     role: ModeratorRole;
+    defaultCtxPostIds?: string[];
+    defaultCtxSpaceIds?: string[];
+    defaultCtxAppIds?: string[];
 }
 interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
     organizationId?: string;
