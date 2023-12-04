@@ -253,7 +253,7 @@ interface SynthModerationForceInitModeratorCallParsedArgs {
 }
 interface SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs {
     address: string;
-    moderatorId: string;
+    moderatorId?: string;
     organizationIds: string[];
     ctxPostIds?: string[];
     ctxSpaceIds?: string[];
@@ -268,13 +268,15 @@ interface SynthModerationForceInitOrganizationCallParsedArgs {
     description?: string;
 }
 interface SynthModerationForceAddOrganizationModeratorCallParsedArgs {
-    organizationId: string;
-    moderatorId: string;
+    organizationId?: string;
+    moderatorId?: string;
+    organizationOwnerSubstrateAddress?: string;
+    moderatorSubstrateAddress?: string;
     role: ModeratorRole;
 }
 interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
-    address: string;
-    organizationId: string;
+    organizationId?: string;
+    organizationOwnerSubstrateAddress?: string;
     ctxPostIds?: string[];
     ctxSpaceIds?: string[];
     ctxAppIds?: string[];

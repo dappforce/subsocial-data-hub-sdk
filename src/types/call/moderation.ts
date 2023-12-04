@@ -50,7 +50,7 @@ export interface SynthModerationForceInitModeratorCallParsedArgs {
 
 export interface SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs {
   address: string;
-  moderatorId: string;
+  moderatorId?: string;
   organizationIds: string[];
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
@@ -67,14 +67,16 @@ export interface SynthModerationForceInitOrganizationCallParsedArgs {
 }
 
 export interface SynthModerationForceAddOrganizationModeratorCallParsedArgs {
-  organizationId: string;
-  moderatorId: string;
+  organizationId?: string;
+  moderatorId?: string;
+  organizationOwnerSubstrateAddress?: string;
+  moderatorSubstrateAddress?: string;
   role: ModeratorRole;
 }
 
 export interface SynthModerationForceAddCtxToOrganizationCallParsedArgs {
-  address: string;
-  organizationId: string;
+  organizationId?: string;
+  organizationOwnerSubstrateAddress?: string;
   ctxPostIds?: string[];
   ctxSpaceIds?: string[];
   ctxAppIds?: string[];
