@@ -69,5 +69,10 @@ export const socialCallName = {
   synth_moderation_force_init_organization:
     'synth_moderation_force_init_organization',
   synth_moderation_force_add_organization_moderator:
-    'synth_moderation_force_add_organization_moderator'
+    'synth_moderation_force_add_organization_moderator',
+
+  synth_active_staking_create_super_like:
+    'synth_active_staking_create_super_like',
+  synth_active_staking_delete_super_like:
+    'synth_active_staking_delete_super_like'
 } as const;

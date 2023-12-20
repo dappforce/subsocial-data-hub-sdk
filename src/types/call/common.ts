@@ -23,6 +23,10 @@ import {
   SynthDeleteLinkedIdentityCallParsedArgs
 } from './identity';
 import { socialCallName } from './constants';
+import {
+  SynthActiveStakingCreateSuperLikeCallParsedArgs,
+  SynthActiveStakingDeleteSuperLikeCallParsedArgs
+} from './activeStaking';
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
   forced: boolean;
@@ -242,6 +246,10 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthModerationForceInitOrganizationCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_force_add_organization_moderator']
     ? SynthModerationForceAddOrganizationModeratorCallParsedArgs
+    : E extends (typeof socialCallName)['synth_active_staking_create_super_like']
+    ? SynthActiveStakingCreateSuperLikeCallParsedArgs
+    : E extends (typeof socialCallName)['synth_active_staking_delete_super_like']
+    ? SynthActiveStakingDeleteSuperLikeCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {
