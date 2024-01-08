@@ -377,10 +377,12 @@ declare const socialCallName: {
 interface SynthActiveStakingCreateSuperLikeCallParsedArgs {
     postId: string;
     multiplier?: number;
+    blockNumber?: number;
 }
 interface SynthActiveStakingDeleteSuperLikeCallParsedArgs {
     postId: string;
     multiplier?: number;
+    blockNumber?: number;
 }
 
 interface CreatePostCallParsedArgs extends ContentSrcDecorated {
