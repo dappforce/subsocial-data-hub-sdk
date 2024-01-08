@@ -1,11 +1,11 @@
 export interface SynthActiveStakingCreateSuperLikeCallParsedArgs {
   postId: string;
   multiplier?: number;
-  blockHash?: number;
+  blockHash?: string;
 }
 
 export interface SynthActiveStakingDeleteSuperLikeCallParsedArgs {
   postId: string;
   multiplier?: number;
-  blockHash?: number;
+  blockHash?: string;
 }
