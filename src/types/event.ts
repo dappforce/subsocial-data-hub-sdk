@@ -144,13 +144,13 @@ export interface AccountUnfollowedEventParsedParams {
 
 export interface DomainRegisteredEventParsedParams {
   accountId: string;
-  domain: Uint8Array;
+  domain: string;
   recipientId?: string;
 }
 
 export interface DomainMetaUpdatedEventParsedParams {
   accountId: string;
-  domain: Uint8Array;
+  domain: string;
 }
 
 export interface EvmAddressLinkedToAccountEventParsedParams {

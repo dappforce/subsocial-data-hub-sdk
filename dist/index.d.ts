@@ -152,12 +152,12 @@ interface AccountUnfollowedEventParsedParams {
 }
 interface DomainRegisteredEventParsedParams {
     accountId: string;
-    domain: Uint8Array;
+    domain: string;
     recipientId?: string;
 }
 interface DomainMetaUpdatedEventParsedParams {
     accountId: string;
-    domain: Uint8Array;
+    domain: string;
 }
 interface EvmAddressLinkedToAccountEventParsedParams {
     substrateAccountId: string;
