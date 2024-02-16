@@ -374,15 +374,21 @@ declare const socialCallName: {
     readonly synth_active_staking_delete_super_like: "synth_active_staking_delete_super_like";
 };
 
+interface SynthActiveStakingConfirmationDataCallParsedArgs {
+    msg: string;
+    sig: string;
+}
 interface SynthActiveStakingCreateSuperLikeCallParsedArgs {
     postId: string;
     multiplier?: number;
     blockHash?: string;
+    confirmation?: SynthActiveStakingConfirmationDataCallParsedArgs;
 }
 interface SynthActiveStakingDeleteSuperLikeCallParsedArgs {
     postId: string;
     multiplier?: number;
     blockHash?: string;
+    confirmation?: SynthActiveStakingConfirmationDataCallParsedArgs;
 }
 
 interface CreatePostCallParsedArgs extends ContentSrcDecorated {
