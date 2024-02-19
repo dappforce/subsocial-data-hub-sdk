@@ -302,7 +302,9 @@ interface SynthModerationForceUnblockResourceCallParsedArgs {
 
 declare enum IdentityProvider {
     TWITTER = "TWITTER",
-    EMAIL = "EMAIL"
+    EMAIL = "EMAIL",
+    FACEBOOK = "FACEBOOK",
+    GOOGLE = "GOOGLE"
 }
 
 interface SynthCreateLinkedIdentityCallParsedArgs {
