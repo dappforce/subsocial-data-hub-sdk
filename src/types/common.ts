@@ -29,3 +29,9 @@ export const socialEventProtVersion = {
 } as const;
 
 export type SocialEventProtVersion = keyof typeof socialEventProtVersion;
+
+export enum DataHubClientId {
+  POLKAVERSE = 'POLKAVERSE',
+  GRILLSO = 'GRILLSO',
+  OTHER = 'OTHER'
+}
