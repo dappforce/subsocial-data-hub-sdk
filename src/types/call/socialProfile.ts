@@ -1,6 +1,6 @@
 import { DataHubClientId } from '../common';
 
-export interface SynthSocialProfileAddRefIdCallParsedArgs {
+export interface SynthSocialProfileAddReferrerIdCallParsedArgs {
   refId: string;
   clientId: DataHubClientId;
   timestamp?: string;

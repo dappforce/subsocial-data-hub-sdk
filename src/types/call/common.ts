@@ -27,7 +27,7 @@ import {
   SynthActiveStakingCreateSuperLikeCallParsedArgs,
   SynthActiveStakingDeleteSuperLikeCallParsedArgs
 } from './activeStaking';
-import { SynthSocialProfileAddRefIdCallParsedArgs } from './socialProfile';
+import { SynthSocialProfileAddReferrerIdCallParsedArgs } from './socialProfile';
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
   forced: boolean;
@@ -251,8 +251,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthActiveStakingCreateSuperLikeCallParsedArgs
     : E extends (typeof socialCallName)['synth_active_staking_delete_super_like']
     ? SynthActiveStakingDeleteSuperLikeCallParsedArgs
-    : E extends (typeof socialCallName)['synth_social_profile_add_ref_id']
-    ? SynthSocialProfileAddRefIdCallParsedArgs
+    : E extends (typeof socialCallName)['synth_social_profile_add_referrer_id']
+    ? SynthSocialProfileAddReferrerIdCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {
