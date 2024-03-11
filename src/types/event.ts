@@ -175,6 +175,13 @@ export interface ProxyRemovedEventParsedParams {
   proxyType: string;
 }
 
+export interface CreatorStakingStakedEventParsedParams {
+  who: string;
+  creatorId: string;
+  era: number;
+  amount: string;
+}
+
 export type SocialOnChainEventDataParams<
   E extends keyof typeof socialEventName
 > = E extends (typeof socialEventName)['PostCreated']

@@ -7,9 +7,14 @@ export const socialCallName = {
   unfollow_post: 'unfollow_post',
 
   create_space: 'create_space',
+  update_space: 'update_space',
+
   force_create_space: 'force_create_space',
   create_space_as_profile: 'create_space_as_profile',
-  update_space: 'update_space',
+
+  set_profile: 'set_profile',
+  reset_profile: 'reset_profile',
+  force_set_space_as_profile: 'force_set_space_as_profile',
 
   create_post_reaction: 'create_post_reaction',
   force_create_post_reaction: 'force_create_post_reaction',
