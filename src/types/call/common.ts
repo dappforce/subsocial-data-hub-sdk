@@ -172,6 +172,14 @@ export interface SynthUpdatePostTxRetryCallParsedArgs {
   timestamp: string;
 }
 
+export interface SynthAddPostViewCallParsedArgs {
+  viewerId: string;
+  duration: number;
+  postId?: string;
+  postPersistentId?: string;
+  timestamp?: string;
+}
+
 export type SocialCallNameEnum = typeof socialCallName;
 
 export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
@@ -253,6 +261,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthActiveStakingDeleteSuperLikeCallParsedArgs
     : E extends (typeof socialCallName)['synth_social_profile_add_referrer_id']
     ? SynthSocialProfileAddReferrerIdCallParsedArgs
+    : E extends (typeof socialCallName)['synth_add_post_view']
+    ? SynthAddPostViewCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {
