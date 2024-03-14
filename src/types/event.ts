@@ -1,4 +1,9 @@
 import { ReactionKind } from './common';
+import {
+  OwnershipTransferAcceptedEventParsedParams,
+  OwnershipTransferCreatedEventParsedParams,
+  OwnershipTransferRejectedEventParsedParams
+} from './ownership';
 
 export const socialEventName = {
   PostCreated: 'PostCreated',
@@ -17,6 +22,9 @@ export const socialEventName = {
   SpaceUnfollowed: 'SpaceUnfollowed',
   SpaceOwnershipTransferAccepted: 'SpaceOwnershipTransferAccepted',
   SpaceOwnershipTransferCreated: 'SpaceOwnershipTransferCreated',
+  OwnershipTransferCreated: 'OwnershipTransferCreated',
+  OwnershipTransferAccepted: 'OwnershipTransferAccepted',
+  OwnershipTransferRejected: 'OwnershipTransferRejected',
   AccountFollowed: 'AccountFollowed',
   AccountUnfollowed: 'AccountUnfollowed',
   ProfileUpdated: 'ProfileUpdated',
@@ -214,6 +222,12 @@ export type SocialOnChainEventDataParams<
   ? SpaceOwnershipTransferCreatedEventParsedParams
   : E extends (typeof socialEventName)['SpaceOwnershipTransferAccepted']
   ? SpaceOwnershipTransferAcceptedEventParsedParams
+  : E extends (typeof socialEventName)['OwnershipTransferCreated']
+  ? OwnershipTransferCreatedEventParsedParams
+  : E extends (typeof socialEventName)['OwnershipTransferAccepted']
+  ? OwnershipTransferAcceptedEventParsedParams
+  : E extends (typeof socialEventName)['OwnershipTransferRejected']
+  ? OwnershipTransferRejectedEventParsedParams
   : E extends (typeof socialEventName)['AccountFollowed']
   ? AccountFollowedEventParsedParams
   : E extends (typeof socialEventName)['AccountUnfollowed']

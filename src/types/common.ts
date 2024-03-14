@@ -33,5 +33,12 @@ export type SocialEventProtVersion = keyof typeof socialEventProtVersion;
 export enum DataHubClientId {
   POLKAVERSE = 'POLKAVERSE',
   GRILLSO = 'GRILLSO',
+  GRILLAPP = 'GRILLAPP',
   OTHER = 'OTHER'
+}
+
+export interface OwnershipEntity {
+  Post: string | null;
+  Space: string | null;
+  Domain: string | null;
 }

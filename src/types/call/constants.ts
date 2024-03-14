@@ -33,8 +33,15 @@ export const socialCallName = {
   follow_space: 'follow_space',
   force_follow_space: 'force_follow_space',
   unfollow_space: 'unfollow_space',
+
+  transfer_space_ownership: 'transfer_space_ownership',
   accept_pending_ownership: 'accept_pending_ownership',
   reject_pending_ownership: 'reject_pending_ownership',
+
+  ownership_transfer_ownership: 'ownership_transfer_ownership',
+  ownership_accept_pending_ownership: 'ownership_accept_pending_ownership',
+  ownership_reject_pending_ownership: 'ownership_reject_pending_ownership',
+
   register_domain: 'register_domain',
   force_register_domain: 'force_register_domain',
   set_domain_content: 'set_domain_content',

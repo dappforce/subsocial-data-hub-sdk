@@ -28,6 +28,11 @@ import {
   SynthActiveStakingDeleteSuperLikeCallParsedArgs
 } from './activeStaking';
 import { SynthSocialProfileAddReferrerIdCallParsedArgs } from './socialProfile';
+import {
+  OwnershipAcceptPendingOwnershipCallParsedArgs,
+  OwnershipRejectPendingOwnershipCallParsedArgs,
+  OwnershipTransferOwnershipCallParsedArgs
+} from './ownership';
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
   forced: boolean;
@@ -219,6 +224,12 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? AddProxyCallParsedArgs
     : E extends (typeof socialCallName)['remove_proxy']
     ? RemoveProxyCallParsedArgs
+    : E extends (typeof socialCallName)['ownership_transfer_ownership']
+    ? OwnershipTransferOwnershipCallParsedArgs
+    : E extends (typeof socialCallName)['ownership_accept_pending_ownership']
+    ? OwnershipAcceptPendingOwnershipCallParsedArgs
+    : E extends (typeof socialCallName)['ownership_reject_pending_ownership']
+    ? OwnershipRejectPendingOwnershipCallParsedArgs
     : E extends (typeof socialCallName)['synth_create_post_tx_failed']
     ? SynthCreatePostTxFailedCallParsedArgs
     : E extends (typeof socialCallName)['synth_create_post_tx_retry']
