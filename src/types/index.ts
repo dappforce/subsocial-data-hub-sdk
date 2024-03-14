@@ -21,6 +21,7 @@ export * from './contentExtension';
 export * from './subscription';
 export * from './identity';
 export * from './moderation';
+export * from './ownership';
 
 export enum SocialEventDataType {
   persistent = 'persistent',
