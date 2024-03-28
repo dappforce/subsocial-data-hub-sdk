@@ -48,6 +48,8 @@ export const socialEventName = {
   CommentReplyReactionDeleted: 'CommentReplyReactionDeleted',
   UserNameRegistered: 'UserNameRegistered',
   UserNameUpdated: 'UserNameUpdated',
+  DomainRegistered: 'DomainRegistered',
+  DomainMetaUpdated: 'DomainMetaUpdated',
   EvmAddressUnlinkedFromAccount: 'EvmAddressUnlinkedFromAccount',
   EvmAddressLinkedToAccount: 'EvmAddressLinkedToAccount',
   ProxyAdded: 'ProxyAdded',
@@ -234,7 +236,11 @@ export type SocialOnChainEventDataParams<
   ? AccountUnfollowedEventParsedParams
   : E extends (typeof socialEventName)['UserNameRegistered']
   ? DomainRegisteredEventParsedParams
+  : E extends (typeof socialEventName)['DomainRegistered']
+  ? DomainRegisteredEventParsedParams
   : E extends (typeof socialEventName)['UserNameUpdated']
+  ? DomainMetaUpdatedEventParsedParams
+  : E extends (typeof socialEventName)['DomainMetaUpdated']
   ? DomainMetaUpdatedEventParsedParams
   : E extends (typeof socialEventName)['EvmAddressLinkedToAccount']
   ? EvmAddressLinkedToAccountEventParsedParams
