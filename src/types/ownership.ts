@@ -1,17 +1,17 @@
-import { EntityWithOwnership } from './common';
+import { OwnableEntity } from './common';
 
 export interface OwnershipTransferCreatedEventParsedParams {
   currentOwnerId: string;
-  entity: EntityWithOwnership;
+  entity: OwnableEntity;
   newOwnerId: string;
 }
 
 export interface OwnershipTransferAcceptedEventParsedParams {
   accountId: string;
-  entity: EntityWithOwnership;
+  entity: OwnableEntity;
 }
 
 export interface OwnershipTransferRejectedEventParsedParams {
   accountId: string;
-  entity: EntityWithOwnership;
+  entity: OwnableEntity;
 }

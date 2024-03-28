@@ -37,13 +37,13 @@ export enum DataHubClientId {
   OTHER = 'OTHER'
 }
 
-export enum OwnershipEntityKind {
+export enum OwnableEntityKind {
   Post = 'Post',
   Space = 'Space',
   Domain = 'Domain'
 }
 
-export interface EntityWithOwnership {
-  kind: OwnershipEntityKind;
+export interface OwnableEntity {
+  kind: OwnableEntityKind;
   id: string;
 }

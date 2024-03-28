@@ -1,14 +1,14 @@
-import { EntityWithOwnership } from '../common';
+import { OwnableEntity } from '../common';
 
 export interface OwnershipTransferOwnershipCallParsedArgs {
   transferToAccountId: string;
-  entity: EntityWithOwnership;
+  entity: OwnableEntity;
 }
 
 export interface OwnershipAcceptPendingOwnershipCallParsedArgs {
-  entity: EntityWithOwnership;
+  entity: OwnableEntity;
 }
 
 export interface OwnershipRejectPendingOwnershipCallParsedArgs {
-  entity: EntityWithOwnership;
+  entity: OwnableEntity;
 }
