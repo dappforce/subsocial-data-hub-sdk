@@ -186,7 +186,7 @@ export interface SynthAddPostViewCallParsedArgs {
 }
 
 export interface SynthAddPostViewsBatchCallParsedArgs {
-  views: SynthAddPostViewCallParsedArgs;
+  views: SynthAddPostViewCallParsedArgs[];
 }
 
 export type SocialCallNameEnum = typeof socialCallName;
