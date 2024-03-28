@@ -185,6 +185,10 @@ export interface SynthAddPostViewCallParsedArgs {
   timestamp?: string;
 }
 
+export interface SynthAddPostViewsBatchCallParsedArgs {
+  views: SynthAddPostViewCallParsedArgs;
+}
+
 export type SocialCallNameEnum = typeof socialCallName;
 
 export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
@@ -274,6 +278,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthSocialProfileAddReferrerIdCallParsedArgs
     : E extends (typeof socialCallName)['synth_add_post_view']
     ? SynthAddPostViewCallParsedArgs
+    : E extends (typeof socialCallName)['synth_add_post_views_batch']
+    ? SynthAddPostViewsBatchCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {
