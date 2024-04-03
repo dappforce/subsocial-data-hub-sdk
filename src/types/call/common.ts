@@ -73,9 +73,16 @@ export interface CreateSpaceCallParsedArgs extends ContentSrcDecorated {
   } | null;
 }
 
+export interface CreateSpaceAsProfileCallParsedArgs
+  extends ContentSrcDecorated {}
+
 export interface UpdateSpaceCallParsedArgs extends ContentSrcDecorated {
   permissions: SpacePermissionsScope;
   hidden: boolean;
+}
+
+export interface SetProfileCallParsedArgs {
+  spaceId: string;
 }
 
 export interface PostReactionCreateCallParsedArgs {
@@ -202,6 +209,10 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? CreateSpaceCallParsedArgs
     : E extends (typeof socialCallName)['update_space']
     ? UpdateSpaceCallParsedArgs
+    : E extends (typeof socialCallName)['create_space_as_profile']
+    ? CreateSpaceAsProfileCallParsedArgs
+    : E extends (typeof socialCallName)['set_profile']
+    ? SetProfileCallParsedArgs
     : E extends (typeof socialCallName)['create_post_reaction']
     ? PostReactionCreateCallParsedArgs
     : E extends (typeof socialCallName)['update_post_reaction']
