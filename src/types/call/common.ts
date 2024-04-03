@@ -62,7 +62,7 @@ export interface MovePostCallParsedArgs {
 }
 
 export interface CreateSpaceCallParsedArgs extends ContentSrcDecorated {
-  permissions: SpacePermissionsScope;
+  permissions?: SpacePermissionsScope;
   forced: boolean;
   forcedData: {
     account: string;
@@ -77,8 +77,8 @@ export interface CreateSpaceAsProfileCallParsedArgs
   extends ContentSrcDecorated {}
 
 export interface UpdateSpaceCallParsedArgs extends ContentSrcDecorated {
-  permissions: SpacePermissionsScope;
-  hidden: boolean;
+  permissions?: SpacePermissionsScope;
+  hidden?: boolean;
 }
 
 export interface SetProfileCallParsedArgs {

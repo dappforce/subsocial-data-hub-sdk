@@ -487,7 +487,7 @@ interface MovePostCallParsedArgs {
     toSpace: string | null | undefined;
 }
 interface CreateSpaceCallParsedArgs extends ContentSrcDecorated {
-    permissions: SpacePermissionsScope;
+    permissions?: SpacePermissionsScope;
     forced: boolean;
     forcedData: {
         account: string;
@@ -500,8 +500,8 @@ interface CreateSpaceCallParsedArgs extends ContentSrcDecorated {
 interface CreateSpaceAsProfileCallParsedArgs extends ContentSrcDecorated {
 }
 interface UpdateSpaceCallParsedArgs extends ContentSrcDecorated {
-    permissions: SpacePermissionsScope;
-    hidden: boolean;
+    permissions?: SpacePermissionsScope;
+    hidden?: boolean;
 }
 interface SetProfileCallParsedArgs {
     spaceId: string;
