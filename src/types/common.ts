@@ -12,6 +12,20 @@ export enum PostKind {
   RegularPost = 'RegularPost'
 }
 
+export enum SocialAction {
+  CREATE_REGULAR_POST = 'CREATE_REGULAR_POST',
+  UPDATE_REGULAR_POST = 'UPDATE_REGULAR_POST',
+
+  CREATE_COMMENT = 'CREATE_COMMENT',
+  UPDATE_COMMENT = 'UPDATE_COMMENT',
+
+  CREATE_REPLY = 'CREATE_REPLY',
+  UPDATE_REPLY = 'UPDATE_REPLY',
+
+  CREATE_SPACE = 'CREATE_SPACE',
+  UPDATE_SPACE = 'UPDATE_SPACE'
+}
+
 export interface SpacePermissionsScope {
   none: Required<SpacePermissionMap>;
   everyone: Required<SpacePermissionMap>;
