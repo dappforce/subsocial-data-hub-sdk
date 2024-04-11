@@ -51,6 +51,12 @@ export enum ServiceMessageStatusCode {
 }
 
 export type SubscriptionServiceMessageMeta = {
+  code: ServiceMessageStatusCode;
+  msg?: string;
+  extension?: Record<any, any>;
+};
+
+export type SubscriptionServiceMessageToTargetMeta = {
   targetAddress: string;
   code: ServiceMessageStatusCode;
   callId?: string;
@@ -62,6 +68,11 @@ export type SubscriptionServiceMessageMeta = {
 export type SubscriptionServiceMessage = {
   event: DataHubSubscriptionEventEnum;
   meta: SubscriptionServiceMessageMeta;
+};
+
+export type SubscriptionServiceMessageToTarget = {
+  event: DataHubSubscriptionEventEnum;
+  meta: SubscriptionServiceMessageToTargetMeta;
 };
 
 export type SubscriptionServiceAccountToken = {
