@@ -50,16 +50,18 @@ export enum ServiceMessageStatusCode {
   BAD_REQUEST = 'BAD_REQUEST'
 }
 
+export type SubscriptionServiceMessageMeta = {
+  targetAddress: string;
+  code: ServiceMessageStatusCode;
+  callId?: string;
+  callName?: keyof typeof socialCallName;
+  msg?: string;
+  extension?: Record<any, any>;
+};
+
 export type SubscriptionServiceMessage = {
   event: DataHubSubscriptionEventEnum;
-  meta: {
-    targetAddress: string;
-    code: ServiceMessageStatusCode;
-    callId?: string;
-    callName?: keyof typeof socialCallName;
-    msg?: string;
-    extension?: Record<any, any>;
-  };
+  meta: SubscriptionServiceMessageMeta;
 };
 
 export type SubscriptionServiceAccountToken = {
