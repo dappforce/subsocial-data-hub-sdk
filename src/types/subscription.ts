@@ -1,3 +1,5 @@
+import { socialCallName } from './call';
+
 export enum DataHubSubscriptionEventEnum {
   POST_CREATED = 'POST_CREATED',
   POST_STATE_UPDATED = 'POST_STATE_UPDATED',
@@ -23,5 +25,59 @@ export enum DataHubSubscriptionEventEnum {
   ACTIVE_STAKING_SUPER_LIKE_CREATED = 'ACTIVE_STAKING_SUPER_LIKE_CREATED',
   ACTIVE_STAKING_SUPER_LIKE_STATE_UPDATED = 'ACTIVE_STAKING_SUPER_LIKE_STATE_UPDATED',
 
-  SERVICE_ACCOUNT_ERROR_EVENT = 'SERVICE_ACCOUNT_ERROR_EVENT'
+  SERVICE_ACCOUNT_INFO_EVENT = 'SERVICE_ACCOUNT_INFO_EVENT',
+  SERVICE_ACCOUNT_SUCCESS_EVENT = 'SERVICE_ACCOUNT_SUCCESS_EVENT',
+  SERVICE_ACCOUNT_ERROR_EVENT = 'SERVICE_ACCOUNT_ERROR_EVENT',
+  SERVICE_ACCOUNT_WARNING_EVENT = 'SERVICE_ACCOUNT_WARNING_EVENT'
 }
+
+export enum ServiceMessageStatusCode {
+  PROCESSED = 'PROCESSED',
+  CREATED = 'CREATED',
+  UPDATED = 'UPDATED',
+  MOVED = 'MOVED',
+
+  UNAUTHORIZED = 'UNAUTHORIZED',
+  FORBIDDEN = 'FORBIDDEN',
+  ENTITY_NOT_FOUND = 'ENTITY_NOT_FOUND',
+  TOO_MANY_REQUESTS = 'TOO_MANY_REQUESTS',
+  SERVICE_UNAVAILABLE = 'SERVICE_UNAVAILABLE',
+  INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR',
+  UNPROCESSABLE_ENTITY = 'UNPROCESSABLE_ENTITY',
+  PAYMENT_REQUIRED = 'PAYMENT_REQUIRED',
+  BAD_REQUEST = 'BAD_REQUEST'
+}
+
+export type SubscriptionServiceMessage =
+  | ({
+      event:
+        | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_SUCCESS_EVENT
+        | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_ERROR_EVENT;
+    } & {
+      meta: {
+        targetAddress: string;
+        callName: keyof typeof socialCallName;
+        code: ServiceMessageStatusCode;
+        msg?: string;
+      };
+    })
+  | ({
+      event:
+        | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_INFO_EVENT
+        | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_WARNING_EVENT;
+    } & {
+      meta: {
+        targetAddress: string;
+        code: ServiceMessageStatusCode;
+        msg?: string;
+        extension?: Record<any, any>;
+      };
+    });
+
+export type SubscriptionServiceAccountToken = {
+  sig: string;
+  msg: {
+    address: string;
+    timestamp: string;
+  };
+};

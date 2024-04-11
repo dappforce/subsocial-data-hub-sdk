@@ -763,8 +763,52 @@ declare enum DataHubSubscriptionEventEnum {
     MODERATION_ORGANIZATION_STATE_UPDATED = "MODERATION_ORGANIZATION_STATE_UPDATED",
     ACTIVE_STAKING_SUPER_LIKE_CREATED = "ACTIVE_STAKING_SUPER_LIKE_CREATED",
     ACTIVE_STAKING_SUPER_LIKE_STATE_UPDATED = "ACTIVE_STAKING_SUPER_LIKE_STATE_UPDATED",
-    SERVICE_ACCOUNT_ERROR_EVENT = "SERVICE_ACCOUNT_ERROR_EVENT"
+    SERVICE_ACCOUNT_INFO_EVENT = "SERVICE_ACCOUNT_INFO_EVENT",
+    SERVICE_ACCOUNT_SUCCESS_EVENT = "SERVICE_ACCOUNT_SUCCESS_EVENT",
+    SERVICE_ACCOUNT_ERROR_EVENT = "SERVICE_ACCOUNT_ERROR_EVENT",
+    SERVICE_ACCOUNT_WARNING_EVENT = "SERVICE_ACCOUNT_WARNING_EVENT"
 }
+declare enum ServiceMessageStatusCode {
+    PROCESSED = "PROCESSED",
+    CREATED = "CREATED",
+    UPDATED = "UPDATED",
+    MOVED = "MOVED",
+    UNAUTHORIZED = "UNAUTHORIZED",
+    FORBIDDEN = "FORBIDDEN",
+    ENTITY_NOT_FOUND = "ENTITY_NOT_FOUND",
+    TOO_MANY_REQUESTS = "TOO_MANY_REQUESTS",
+    SERVICE_UNAVAILABLE = "SERVICE_UNAVAILABLE",
+    INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR",
+    UNPROCESSABLE_ENTITY = "UNPROCESSABLE_ENTITY",
+    PAYMENT_REQUIRED = "PAYMENT_REQUIRED",
+    BAD_REQUEST = "BAD_REQUEST"
+}
+type SubscriptionServiceMessage = ({
+    event: DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_SUCCESS_EVENT | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_ERROR_EVENT;
+} & {
+    meta: {
+        targetAddress: string;
+        callName: keyof typeof socialCallName;
+        code: ServiceMessageStatusCode;
+        msg?: string;
+    };
+}) | ({
+    event: DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_INFO_EVENT | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_WARNING_EVENT;
+} & {
+    meta: {
+        targetAddress: string;
+        code: ServiceMessageStatusCode;
+        msg?: string;
+        extension?: Record<any, any>;
+    };
+});
+type SubscriptionServiceAccountToken = {
+    sig: string;
+    msg: {
+        address: string;
+        timestamp: string;
+    };
+};
 
 declare enum SocialEventDataType {
     persistent = "persistent",
@@ -824,4 +868,4 @@ type SocialEventDataGeneric<T extends SocialEventDataType, C extends keyof Socia
     content?: Partial<IpfsContent<keyof typeof ipfsContentSection>>;
 } : never;
 
-export { AccountFollowedEventParsedParams, AccountUnfollowedEventParsedParams, AddProxyCallParsedArgs, ContentExtensionData, ContentExtensionId, ContentSrcDecorated, CreatePostCallParsedArgs, CreateSpaceAsProfileCallParsedArgs, CreateSpaceCallParsedArgs, CreatorStakingStakedEventParsedParams, DataHubClientId, DataHubSubscriptionEventEnum, DomainMetaUpdatedEventParsedParams, DomainRegisteredEventParsedParams, EvmAddressLinkedToAccountEventParsedParams, EvmAddressUnlinkedFromAccountEventParsedParams, ExtensionPropertiesAll, FollowAccountCallParsedArgs, FollowPostCallParsedArgs, FollowSpaceCallParsedArgs, IdentityProvider, InReplyToKind, IpfsContent, IpfsContentSection, IpfsPostContentSummarized, IpfsSpaceContentSummarized, LinkEvmAddressCallParsedArgs, ModerationResourceType, ModeratorRole, MovePostCallParsedArgs, OwnableEntity, OwnableEntityKind, OwnershipAcceptPendingOwnershipCallParsedArgs, OwnershipRejectPendingOwnershipCallParsedArgs, OwnershipTransferAcceptedEventParsedParams, OwnershipTransferCreatedEventParsedParams, OwnershipTransferOwnershipCallParsedArgs, OwnershipTransferRejectedEventParsedParams, PostContentWithInReplyTo, PostCreatedEventParsedParams, PostFollowedEventParsedParams, PostKind, PostMovedEventParsedParams, PostReactionCreateCallParsedArgs, PostReactionCreatedEventParsedParams, PostReactionDeleteCallParsedArgs, PostReactionDeletedEventParsedParams, PostReactionUpdateCallParsedArgs, PostReactionUpdatedEventParsedParams, PostTweetDetailsIPFS, PostUnfollowedEventParsedParams, PostUpdatedEventParsedParams, ProfileUpdatedEventParsedParams, ProxyAddedEventParsedParams, ProxyRemovedEventParsedParams, ReactionKind, RemoveProxyCallParsedArgs, SetProfileCallParsedArgs, SocialAction, SocialCallData, SocialCallDataApiInput, SocialCallDataArgs, SocialCallNameEnum, SocialEventData, SocialEventDataApiInput, SocialEventDataGeneric, SocialEventDataSignature, SocialEventDataType, SocialEventNameEnum, SocialEventProtVersion, SocialEventProtocolMetadata, SocialOnChainEventData, SocialOnChainEventDataApiInput, SocialOnChainEventDataParams, SocialOnChainEventMetadata, SpaceCreatedEventParsedParams, SpaceFollowedEventParsedParams, SpaceOwnershipTransferAcceptedEventParsedParams, SpaceOwnershipTransferCreatedEventParsedParams, SpacePermissionsScope, SpaceUnfollowedEventParsedParams, SpaceUpdatedEventParsedParams, SynthActiveStakingConfirmationDataCallParsedArgs, SynthActiveStakingCreateSuperLikeCallParsedArgs, SynthActiveStakingDeleteSuperLikeCallParsedArgs, SynthAddPostViewCallParsedArgs, SynthAddPostViewsBatchCallParsedArgs, SynthCreateLinkedIdentityCallParsedArgs, SynthCreatePostTxFailedCallParsedArgs, SynthCreatePostTxRetryCallParsedArgs, SynthDeleteLinkedIdentityCallParsedArgs, SynthModerationAddCtxToOrganizationCallParsedArgs, SynthModerationAddDefaultCtxToModeratorCallParsedArgs, SynthModerationBlockResourceCallParsedArgs, SynthModerationForceAddCtxToOrganizationCallParsedArgs, SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs, SynthModerationForceAddOrganizationModeratorCallParsedArgs, SynthModerationForceBlockResourceCallParsedArgs, SynthModerationForceInitModeratorCallParsedArgs, SynthModerationForceInitOrganizationCallParsedArgs, SynthModerationForceUnblockResourceCallParsedArgs, SynthModerationInitModeratorCallParsedArgs, SynthModerationUnblockResourceCallParsedArgs, SynthSocialProfileAddReferrerIdCallParsedArgs, SynthUpdatePostTxFailedCallParsedArgs, SynthUpdatePostTxRetryCallParsedArgs, UnfollowAccountCallParsedArgs, UnfollowPostCallParsedArgs, UnfollowSpaceCallParsedArgs, UnlinkEvmAddressCallParsedArgs, UpdatePostCallParsedArgs, UpdateSpaceCallParsedArgs, ipfsContentSection, socialCallName, socialEventName, socialEventProtVersion, supportedIpfsContentMap };
+export { AccountFollowedEventParsedParams, AccountUnfollowedEventParsedParams, AddProxyCallParsedArgs, ContentExtensionData, ContentExtensionId, ContentSrcDecorated, CreatePostCallParsedArgs, CreateSpaceAsProfileCallParsedArgs, CreateSpaceCallParsedArgs, CreatorStakingStakedEventParsedParams, DataHubClientId, DataHubSubscriptionEventEnum, DomainMetaUpdatedEventParsedParams, DomainRegisteredEventParsedParams, EvmAddressLinkedToAccountEventParsedParams, EvmAddressUnlinkedFromAccountEventParsedParams, ExtensionPropertiesAll, FollowAccountCallParsedArgs, FollowPostCallParsedArgs, FollowSpaceCallParsedArgs, IdentityProvider, InReplyToKind, IpfsContent, IpfsContentSection, IpfsPostContentSummarized, IpfsSpaceContentSummarized, LinkEvmAddressCallParsedArgs, ModerationResourceType, ModeratorRole, MovePostCallParsedArgs, OwnableEntity, OwnableEntityKind, OwnershipAcceptPendingOwnershipCallParsedArgs, OwnershipRejectPendingOwnershipCallParsedArgs, OwnershipTransferAcceptedEventParsedParams, OwnershipTransferCreatedEventParsedParams, OwnershipTransferOwnershipCallParsedArgs, OwnershipTransferRejectedEventParsedParams, PostContentWithInReplyTo, PostCreatedEventParsedParams, PostFollowedEventParsedParams, PostKind, PostMovedEventParsedParams, PostReactionCreateCallParsedArgs, PostReactionCreatedEventParsedParams, PostReactionDeleteCallParsedArgs, PostReactionDeletedEventParsedParams, PostReactionUpdateCallParsedArgs, PostReactionUpdatedEventParsedParams, PostTweetDetailsIPFS, PostUnfollowedEventParsedParams, PostUpdatedEventParsedParams, ProfileUpdatedEventParsedParams, ProxyAddedEventParsedParams, ProxyRemovedEventParsedParams, ReactionKind, RemoveProxyCallParsedArgs, ServiceMessageStatusCode, SetProfileCallParsedArgs, SocialAction, SocialCallData, SocialCallDataApiInput, SocialCallDataArgs, SocialCallNameEnum, SocialEventData, SocialEventDataApiInput, SocialEventDataGeneric, SocialEventDataSignature, SocialEventDataType, SocialEventNameEnum, SocialEventProtVersion, SocialEventProtocolMetadata, SocialOnChainEventData, SocialOnChainEventDataApiInput, SocialOnChainEventDataParams, SocialOnChainEventMetadata, SpaceCreatedEventParsedParams, SpaceFollowedEventParsedParams, SpaceOwnershipTransferAcceptedEventParsedParams, SpaceOwnershipTransferCreatedEventParsedParams, SpacePermissionsScope, SpaceUnfollowedEventParsedParams, SpaceUpdatedEventParsedParams, SubscriptionServiceAccountToken, SubscriptionServiceMessage, SynthActiveStakingConfirmationDataCallParsedArgs, SynthActiveStakingCreateSuperLikeCallParsedArgs, SynthActiveStakingDeleteSuperLikeCallParsedArgs, SynthAddPostViewCallParsedArgs, SynthAddPostViewsBatchCallParsedArgs, SynthCreateLinkedIdentityCallParsedArgs, SynthCreatePostTxFailedCallParsedArgs, SynthCreatePostTxRetryCallParsedArgs, SynthDeleteLinkedIdentityCallParsedArgs, SynthModerationAddCtxToOrganizationCallParsedArgs, SynthModerationAddDefaultCtxToModeratorCallParsedArgs, SynthModerationBlockResourceCallParsedArgs, SynthModerationForceAddCtxToOrganizationCallParsedArgs, SynthModerationForceAddDefaultCtxToModeratorCallParsedArgs, SynthModerationForceAddOrganizationModeratorCallParsedArgs, SynthModerationForceBlockResourceCallParsedArgs, SynthModerationForceInitModeratorCallParsedArgs, SynthModerationForceInitOrganizationCallParsedArgs, SynthModerationForceUnblockResourceCallParsedArgs, SynthModerationInitModeratorCallParsedArgs, SynthModerationUnblockResourceCallParsedArgs, SynthSocialProfileAddReferrerIdCallParsedArgs, SynthUpdatePostTxFailedCallParsedArgs, SynthUpdatePostTxRetryCallParsedArgs, UnfollowAccountCallParsedArgs, UnfollowPostCallParsedArgs, UnfollowSpaceCallParsedArgs, UnlinkEvmAddressCallParsedArgs, UpdatePostCallParsedArgs, UpdateSpaceCallParsedArgs, ipfsContentSection, socialCallName, socialEventName, socialEventProtVersion, supportedIpfsContentMap };
