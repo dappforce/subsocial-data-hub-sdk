@@ -55,6 +55,7 @@ export type SubscriptionServiceMessage = {
   meta: {
     targetAddress: string;
     code: ServiceMessageStatusCode;
+    callId?: string;
     callName?: keyof typeof socialCallName;
     msg?: string;
     extension?: Record<any, any>;
