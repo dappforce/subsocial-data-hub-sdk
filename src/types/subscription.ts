@@ -32,11 +32,13 @@ export enum DataHubSubscriptionEventEnum {
 }
 
 export enum ServiceMessageStatusCode {
+  INFO = 'INFO',
   PROCESSED = 'PROCESSED',
   CREATED = 'CREATED',
   UPDATED = 'UPDATED',
   MOVED = 'MOVED',
 
+  WARNING = 'WARNING',
   UNAUTHORIZED = 'UNAUTHORIZED',
   FORBIDDEN = 'FORBIDDEN',
   ENTITY_NOT_FOUND = 'ENTITY_NOT_FOUND',
@@ -48,31 +50,16 @@ export enum ServiceMessageStatusCode {
   BAD_REQUEST = 'BAD_REQUEST'
 }
 
-export type SubscriptionServiceMessage =
-  | ({
-      event:
-        | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_SUCCESS_EVENT
-        | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_ERROR_EVENT;
-    } & {
-      meta: {
-        targetAddress: string;
-        callName: keyof typeof socialCallName;
-        code: ServiceMessageStatusCode;
-        msg?: string;
-      };
-    })
-  | ({
-      event:
-        | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_INFO_EVENT
-        | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_WARNING_EVENT;
-    } & {
-      meta: {
-        targetAddress: string;
-        code: ServiceMessageStatusCode;
-        msg?: string;
-        extension?: Record<any, any>;
-      };
-    });
+export type SubscriptionServiceMessage = {
+  event: DataHubSubscriptionEventEnum;
+  meta: {
+    targetAddress: string;
+    code: ServiceMessageStatusCode;
+    callName?: keyof typeof socialCallName;
+    msg?: string;
+    extension?: Record<any, any>;
+  };
+};
 
 export type SubscriptionServiceAccountToken = {
   sig: string;

@@ -769,10 +769,12 @@ declare enum DataHubSubscriptionEventEnum {
     SERVICE_ACCOUNT_WARNING_EVENT = "SERVICE_ACCOUNT_WARNING_EVENT"
 }
 declare enum ServiceMessageStatusCode {
+    INFO = "INFO",
     PROCESSED = "PROCESSED",
     CREATED = "CREATED",
     UPDATED = "UPDATED",
     MOVED = "MOVED",
+    WARNING = "WARNING",
     UNAUTHORIZED = "UNAUTHORIZED",
     FORBIDDEN = "FORBIDDEN",
     ENTITY_NOT_FOUND = "ENTITY_NOT_FOUND",
@@ -783,25 +785,16 @@ declare enum ServiceMessageStatusCode {
     PAYMENT_REQUIRED = "PAYMENT_REQUIRED",
     BAD_REQUEST = "BAD_REQUEST"
 }
-type SubscriptionServiceMessage = ({
-    event: DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_SUCCESS_EVENT | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_ERROR_EVENT;
-} & {
-    meta: {
-        targetAddress: string;
-        callName: keyof typeof socialCallName;
-        code: ServiceMessageStatusCode;
-        msg?: string;
-    };
-}) | ({
-    event: DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_INFO_EVENT | DataHubSubscriptionEventEnum.SERVICE_ACCOUNT_WARNING_EVENT;
-} & {
+type SubscriptionServiceMessage = {
+    event: DataHubSubscriptionEventEnum;
     meta: {
         targetAddress: string;
         code: ServiceMessageStatusCode;
+        callName?: keyof typeof socialCallName;
         msg?: string;
         extension?: Record<any, any>;
     };
-});
+};
 type SubscriptionServiceAccountToken = {
     sig: string;
     msg: {
