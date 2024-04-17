@@ -1,6 +1,6 @@
 {
   "name": "@subsocial/data-hub-sdk",
-  "version": "0.0.51",
+  "version": "0.0.52",
   "description": "SDK for communication with Social DataHub service",
   "license": "GPL-3.0-only",
   "main": "dist/index.js",
@@ -22,6 +22,7 @@
     "typescript": "^5.1.3"
   },
   "dependencies": {
+    "@neynar/nodejs-sdk": "^1.19.3",
     "@subsocial/api": "^0.8.13",
     "@swc/core": "^1.3.55",
     "ethers": "^6.11.1",

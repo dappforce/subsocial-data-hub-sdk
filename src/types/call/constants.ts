@@ -90,5 +90,9 @@ export const socialCallName = {
 
   synth_social_profile_add_referrer_id: 'synth_social_profile_add_referrer_id',
   synth_add_post_view: 'synth_add_post_view',
-  synth_add_post_views_batch: 'synth_add_post_views_batch'
+  synth_add_post_views_batch: 'synth_add_post_views_batch',
+  synth_farcaster_create_post_from_cast:
+    'synth_farcaster_create_post_from_cast',
+  synth_farcaster_create_super_like_from_reaction:
+    'synth_farcaster_create_super_like_from_reaction'
 } as const;

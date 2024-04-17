@@ -33,6 +33,8 @@ import {
   OwnershipRejectPendingOwnershipCallParsedArgs,
   OwnershipTransferOwnershipCallParsedArgs
 } from './ownership';
+import { Cast } from '@neynar/nodejs-sdk/build/neynar-api/v2';
+import { Reaction } from '@neynar/nodejs-sdk/build/neynar-api/v1';
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
   forced: boolean;
@@ -196,6 +198,13 @@ export interface SynthAddPostViewsBatchCallParsedArgs {
   views: SynthAddPostViewCallParsedArgs[];
 }
 
+export interface SynthFarcasterCreatePostFromCastCallParsedArgs {
+  cast: Cast;
+}
+export interface SynthFarcasterCreateSuperLikeFromReactionCallParsedArgs {
+  reaction: Reaction;
+}
+
 export type SocialCallNameEnum = typeof socialCallName;
 
 export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
@@ -291,6 +300,10 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthAddPostViewCallParsedArgs
     : E extends (typeof socialCallName)['synth_add_post_views_batch']
     ? SynthAddPostViewsBatchCallParsedArgs
+    : E extends (typeof socialCallName)['synth_farcaster_create_post_from_cast']
+    ? SynthFarcasterCreatePostFromCastCallParsedArgs
+    : E extends (typeof socialCallName)['synth_farcaster_create_super_like_from_reaction']
+    ? SynthFarcasterCreateSuperLikeFromReactionCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {
