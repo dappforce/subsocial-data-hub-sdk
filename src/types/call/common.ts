@@ -204,7 +204,7 @@ export interface SynthFarcasterCreatePostFromCastCallParsedArgs {
 export interface SynthFarcasterCreateSuperLikeFromReactionCallParsedArgs {
   castHash: string;
   reactorFid: number;
-  timestamp: string;
+  timestamp: number;
   hash?: string;
   id?: string;
 }

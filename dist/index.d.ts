@@ -623,7 +623,7 @@ interface SynthFarcasterCreatePostFromCastCallParsedArgs {
 interface SynthFarcasterCreateSuperLikeFromReactionCallParsedArgs {
     castHash: string;
     reactorFid: number;
-    timestamp: string;
+    timestamp: number;
     hash?: string;
     id?: string;
 }
