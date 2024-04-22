@@ -202,7 +202,11 @@ export interface SynthFarcasterCreatePostFromCastCallParsedArgs {
   cast: Cast;
 }
 export interface SynthFarcasterCreateSuperLikeFromReactionCallParsedArgs {
-  reaction: Reaction;
+  castHash: string;
+  reactorFid: number;
+  timestamp: string;
+  hash?: string;
+  id?: string;
 }
 
 export type SocialCallNameEnum = typeof socialCallName;
