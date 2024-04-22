@@ -63,3 +63,8 @@ export interface OwnableEntity {
   kind: OwnableEntityKind;
   id: string;
 }
+
+export enum PostSource {
+  NATIVE = 'NATIVE',
+  FARCASTER_AUTO_CROSS_POST = 'FARCASTER_AUTO_CROSS_POST'
+}
