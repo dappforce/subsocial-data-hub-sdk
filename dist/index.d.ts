@@ -363,7 +363,9 @@ declare enum IdentityProvider {
     FACEBOOK = "FACEBOOK",
     GOOGLE = "GOOGLE",
     POLKADOT = "POLKADOT",
-    EVM = "EVM"
+    EVM = "EVM",
+    FARCASTER = "FARCASTER",
+    TELEGRAM = "TELEGRAM"
 }
 
 interface SynthCreateLinkedIdentityCallParsedArgs {
