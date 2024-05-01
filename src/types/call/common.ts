@@ -20,7 +20,8 @@ import {
 } from './moderation';
 import {
   SynthCreateLinkedIdentityCallParsedArgs,
-  SynthDeleteLinkedIdentityCallParsedArgs
+  SynthDeleteLinkedIdentityCallParsedArgs,
+  SynthInitLinkedIdentityCallParsedArgs
 } from './identity';
 import { socialCallName } from './constants';
 import {
@@ -270,6 +271,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthCreateLinkedIdentityCallParsedArgs
     : E extends (typeof socialCallName)['synth_delete_linked_identity']
     ? SynthDeleteLinkedIdentityCallParsedArgs
+    : E extends (typeof socialCallName)['synth_init_linked_identity']
+    ? SynthInitLinkedIdentityCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_init_moderator']
     ? SynthModerationInitModeratorCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_add_ctx_to_organization']
