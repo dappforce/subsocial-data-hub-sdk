@@ -19,6 +19,7 @@ import {
   SynthModerationUnblockResourceCallParsedArgs
 } from './moderation';
 import {
+  SynthAddLinkedIdentityExternalProviderCallParsedArgs,
   SynthCreateLinkedIdentityCallParsedArgs,
   SynthDeleteLinkedIdentityCallParsedArgs,
   SynthInitLinkedIdentityCallParsedArgs
@@ -273,6 +274,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthDeleteLinkedIdentityCallParsedArgs
     : E extends (typeof socialCallName)['synth_init_linked_identity']
     ? SynthInitLinkedIdentityCallParsedArgs
+    : E extends (typeof socialCallName)['synth_add_linked_identity_external_provider']
+    ? SynthAddLinkedIdentityExternalProviderCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_init_moderator']
     ? SynthModerationInitModeratorCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_add_ctx_to_organization']

@@ -60,6 +60,8 @@ export const socialCallName = {
   synth_create_linked_identity: 'synth_create_linked_identity',
   synth_delete_linked_identity: 'synth_delete_linked_identity',
   synth_init_linked_identity: 'synth_init_linked_identity',
+  synth_add_linked_identity_external_provider:
+    'synth_add_linked_identity_external_provider',
 
   synth_moderation_init_moderator: 'synth_moderation_init_moderator',
   synth_moderation_force_init_moderator:
