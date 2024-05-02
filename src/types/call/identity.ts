@@ -20,6 +20,10 @@ export interface SynthAddLinkedIdentityExternalProviderCallParsedArgs {
   externalProvider: {
     id: string;
     provider: IdentityProvider;
+    farcasterCustodyAddress?: string;
+    farcasterVerifiedEthAddresses?: string[];
+    farcasterVerifiedSolAddresses?: string[];
+    farcasterSignerUuid?: string;
   };
 }
 
