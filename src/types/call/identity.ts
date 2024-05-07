@@ -18,7 +18,6 @@ export interface LinkedIdentityExternalProviderDetails {
 
 export interface SynthInitLinkedIdentityCallParsedArgs {
   session: string;
-  id?: string;
   externalProvider?: LinkedIdentityExternalProviderDetails;
 }
 

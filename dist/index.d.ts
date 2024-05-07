@@ -384,7 +384,6 @@ interface LinkedIdentityExternalProviderDetails {
 }
 interface SynthInitLinkedIdentityCallParsedArgs {
     session: string;
-    id?: string;
     externalProvider?: LinkedIdentityExternalProviderDetails;
 }
 interface SynthAddLinkedIdentityExternalProviderCallParsedArgs {
