@@ -383,7 +383,6 @@ interface LinkedIdentityExternalProviderDetails {
     evmProofMsgSig?: string;
 }
 interface SynthInitLinkedIdentityCallParsedArgs {
-    session: string;
     externalProvider?: LinkedIdentityExternalProviderDetails;
 }
 interface SynthAddLinkedIdentityExternalProviderCallParsedArgs {
