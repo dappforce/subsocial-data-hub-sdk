@@ -539,6 +539,7 @@ interface CreateSpaceCallParsedArgs extends ContentSrcDecorated {
 interface CreateSpaceAsProfileCallParsedArgs extends ContentSrcDecorated {
 }
 interface UpdateSpaceCallParsedArgs extends ContentSrcDecorated {
+    spaceId?: string;
     permissions?: SpacePermissionsScope;
     hidden?: boolean;
 }

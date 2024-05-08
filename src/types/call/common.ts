@@ -36,7 +36,6 @@ import {
   OwnershipTransferOwnershipCallParsedArgs
 } from './ownership';
 import { Cast } from '@neynar/nodejs-sdk/build/neynar-api/v2';
-import { Reaction } from '@neynar/nodejs-sdk/build/neynar-api/v1';
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
   forced: boolean;
@@ -81,6 +80,7 @@ export interface CreateSpaceAsProfileCallParsedArgs
   extends ContentSrcDecorated {}
 
 export interface UpdateSpaceCallParsedArgs extends ContentSrcDecorated {
+  spaceId?: string;
   permissions?: SpacePermissionsScope;
   hidden?: boolean;
 }
