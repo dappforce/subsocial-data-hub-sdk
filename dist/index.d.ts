@@ -375,6 +375,7 @@ interface SynthCreateLinkedIdentityCallParsedArgs {
 interface LinkedIdentityExternalProviderDetails {
     id: string;
     provider: IdentityProvider;
+    username?: string;
     farcasterCustodyAddress?: string;
     farcasterVerifiedEthAddresses?: string[];
     farcasterVerifiedSolAddresses?: string[];
@@ -819,6 +820,7 @@ declare enum ServiceMessageStatusCode {
     WARNING = "WARNING",
     UNAUTHORIZED = "UNAUTHORIZED",
     FORBIDDEN = "FORBIDDEN",
+    ENTITY_ALREADY_EXISTS = "ENTITY_ALREADY_EXISTS",
     ENTITY_NOT_FOUND = "ENTITY_NOT_FOUND",
     TOO_MANY_REQUESTS = "TOO_MANY_REQUESTS",
     SERVICE_UNAVAILABLE = "SERVICE_UNAVAILABLE",

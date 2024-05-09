@@ -8,6 +8,7 @@ export interface SynthCreateLinkedIdentityCallParsedArgs {
 export interface LinkedIdentityExternalProviderDetails {
   id: string;
   provider: IdentityProvider;
+  username?: string;
   farcasterCustodyAddress?: string;
   farcasterVerifiedEthAddresses?: string[];
   farcasterVerifiedSolAddresses?: string[];
