@@ -86,7 +86,9 @@ export type SubscriptionServiceMessageToTarget = {
 export type SubscriptionServiceAccountToken = {
   sig: string;
   msg: {
-    address: string;
+    address?: string;
+    proxy?: string;
+    signer?: string;
     timestamp: string;
   };
 };
