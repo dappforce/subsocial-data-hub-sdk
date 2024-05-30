@@ -16,3 +16,7 @@ export interface SynthActiveStakingDeleteSuperLikeCallParsedArgs {
   blockHash?: string;
   confirmation?: SynthActiveStakingConfirmationDataCallParsedArgs;
 }
+
+export interface SynthActiveStakingCreateContentlessActionCallParsedArgs {
+  tapsCount?: number;
+}

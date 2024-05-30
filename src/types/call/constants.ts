@@ -90,6 +90,8 @@ export const socialCallName = {
     'synth_active_staking_create_super_like',
   synth_active_staking_delete_super_like:
     'synth_active_staking_delete_super_like',
+  synth_active_staking_create_contentless_action:
+    'synth_active_staking_create_contentless_action',
 
   synth_social_profile_add_referrer_id: 'synth_social_profile_add_referrer_id',
   synth_add_post_view: 'synth_add_post_view',

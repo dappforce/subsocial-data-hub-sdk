@@ -26,6 +26,7 @@ import {
 } from './identity';
 import { socialCallName } from './constants';
 import {
+  SynthActiveStakingCreateContentlessActionCallParsedArgs,
   SynthActiveStakingCreateSuperLikeCallParsedArgs,
   SynthActiveStakingDeleteSuperLikeCallParsedArgs
 } from './activeStaking';
@@ -304,6 +305,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthActiveStakingCreateSuperLikeCallParsedArgs
     : E extends (typeof socialCallName)['synth_active_staking_delete_super_like']
     ? SynthActiveStakingDeleteSuperLikeCallParsedArgs
+    : E extends (typeof socialCallName)['synth_active_staking_create_contentless_action']
+    ? SynthActiveStakingCreateContentlessActionCallParsedArgs
     : E extends (typeof socialCallName)['synth_social_profile_add_referrer_id']
     ? SynthSocialProfileAddReferrerIdCallParsedArgs
     : E extends (typeof socialCallName)['synth_add_post_view']
