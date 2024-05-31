@@ -17,6 +17,12 @@ export interface SynthActiveStakingDeleteSuperLikeCallParsedArgs {
   confirmation?: SynthActiveStakingConfirmationDataCallParsedArgs;
 }
 
+export interface ContentlessActionTapEnergyState {
+  value: number;
+  timestamp: string;
+}
+
 export interface SynthActiveStakingCreateContentlessActionCallParsedArgs {
   tapsCount?: number;
+  energyState?: ContentlessActionTapEnergyState;
 }
