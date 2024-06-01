@@ -37,6 +37,7 @@ import {
   OwnershipTransferOwnershipCallParsedArgs
 } from './ownership';
 import { Cast } from '@neynar/nodejs-sdk/build/neynar-api/v2';
+import { SynthGamificationAddTappingActivityStatesCallParsedArgs } from './gamification';
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
   forced: boolean;
@@ -305,8 +306,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthActiveStakingCreateSuperLikeCallParsedArgs
     : E extends (typeof socialCallName)['synth_active_staking_delete_super_like']
     ? SynthActiveStakingDeleteSuperLikeCallParsedArgs
-    : E extends (typeof socialCallName)['synth_active_staking_create_contentless_action']
-    ? SynthActiveStakingCreateContentlessActionCallParsedArgs
+    : E extends (typeof socialCallName)['synth_gamification_add_tapping_activity_states']
+    ? SynthGamificationAddTappingActivityStatesCallParsedArgs
     : E extends (typeof socialCallName)['synth_social_profile_add_referrer_id']
     ? SynthSocialProfileAddReferrerIdCallParsedArgs
     : E extends (typeof socialCallName)['synth_add_post_view']
