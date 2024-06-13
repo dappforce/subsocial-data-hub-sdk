@@ -308,6 +308,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthActiveStakingDeleteSuperLikeCallParsedArgs
     : E extends (typeof socialCallName)['synth_gamification_add_tapping_activity_states']
     ? SynthGamificationAddTappingActivityStatesCallParsedArgs
+    : E extends (typeof socialCallName)['synth_gamification_claim_entrance_daily_reward']
+    ? {}
     : E extends (typeof socialCallName)['synth_social_profile_add_referrer_id']
     ? SynthSocialProfileAddReferrerIdCallParsedArgs
     : E extends (typeof socialCallName)['synth_add_post_view']
