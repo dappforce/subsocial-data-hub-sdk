@@ -1,6 +1,12 @@
 export enum GamificationTaskName {
-  JOIN_TELEGRAM_GROUP = 'JOIN_TELEGRAM_GROUP',
-  JOIN_TELEGRAM_CHANNEL = 'JOIN_TELEGRAM_CHANNEL'
+  JOIN_TELEGRAM_CHANNEL = 'JOIN_TELEGRAM_CHANNEL',
+  JOIN_TWITTER = 'JOIN_TWITTER'
+}
+
+export enum GamificationTaskPeriodicity {
+  ONETIME = 'ONETIME',
+  DAILY = 'DAILY',
+  WEEKLY = 'WEEKLY'
 }
 
 export interface GamificationTapEnergyState {
