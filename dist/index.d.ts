@@ -524,7 +524,8 @@ declare enum GamificationTaskPeriodicity {
 }
 declare enum GamificationTaskValidityTimeRange {
     DAY = "DAY",
-    WEEK = "WEEK"
+    WEEK = "WEEK",
+    INFINITE = "INFINITE"
 }
 interface GamificationTapEnergyState {
     value: number;

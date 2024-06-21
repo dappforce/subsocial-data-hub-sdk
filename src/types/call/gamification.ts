@@ -11,7 +11,8 @@ export enum GamificationTaskPeriodicity {
 
 export enum GamificationTaskValidityTimeRange {
   DAY = 'DAY',
-  WEEK = 'WEEK'
+  WEEK = 'WEEK',
+  INFINITE = 'INFINITE'
 }
 
 export interface GamificationTapEnergyState {
