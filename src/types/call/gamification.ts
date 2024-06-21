@@ -9,6 +9,11 @@ export enum GamificationTaskPeriodicity {
   WEEKLY = 'WEEKLY'
 }
 
+export enum GamificationTaskValidityTimeRange {
+  DAY = 'DAY',
+  WEEK = 'WEEK'
+}
+
 export interface GamificationTapEnergyState {
   value: number;
   timestamp: string;
