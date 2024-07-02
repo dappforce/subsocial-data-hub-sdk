@@ -539,7 +539,7 @@ interface SynthGamificationAddTappingActivityStatesCallParsedArgs {
     energyState?: GamificationTapEnergyState;
 }
 interface SynthGamificationClaimTaskCallParsedArgs {
-    taskId: string;
+    taskTag: string;
 }
 
 interface CreatePostCallParsedArgs extends ContentSrcDecorated {

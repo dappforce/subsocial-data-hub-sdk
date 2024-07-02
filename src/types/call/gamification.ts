@@ -30,5 +30,5 @@ export interface SynthGamificationAddTappingActivityStatesCallParsedArgs {
 }
 
 export interface SynthGamificationClaimTaskCallParsedArgs {
-  taskId: string;
+  taskTag: string;
 }
