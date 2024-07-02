@@ -29,7 +29,6 @@ export interface SynthGamificationAddTappingActivityStatesCallParsedArgs {
   energyState?: GamificationTapEnergyState;
 }
 
-export interface SynthGamificationUpdateTaskStatusCallParsedArgs {
-  taskName: GamificationTaskName;
-  externalProviderId: string;
+export interface SynthGamificationClaimTaskCallParsedArgs {
+  taskId: string;
 }

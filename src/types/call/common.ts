@@ -39,7 +39,7 @@ import {
 import { Cast } from '@neynar/nodejs-sdk/build/neynar-api/v2';
 import {
   SynthGamificationAddTappingActivityStatesCallParsedArgs,
-  SynthGamificationUpdateTaskStatusCallParsedArgs
+  SynthGamificationClaimTaskCallParsedArgs
 } from './gamification';
 
 export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
@@ -313,8 +313,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthGamificationAddTappingActivityStatesCallParsedArgs
     : E extends (typeof socialCallName)['synth_gamification_claim_entrance_daily_reward']
     ? {}
-    : E extends (typeof socialCallName)['synth_gamification_update_task_status']
-    ? SynthGamificationUpdateTaskStatusCallParsedArgs
+    : E extends (typeof socialCallName)['synth_gamification_claim_task']
+    ? SynthGamificationClaimTaskCallParsedArgs
     : E extends (typeof socialCallName)['synth_social_profile_add_referrer_id']
     ? SynthSocialProfileAddReferrerIdCallParsedArgs
     : E extends (typeof socialCallName)['synth_add_post_view']
