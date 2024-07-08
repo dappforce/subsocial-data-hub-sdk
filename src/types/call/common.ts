@@ -30,7 +30,10 @@ import {
   SynthActiveStakingCreateSuperLikeCallParsedArgs,
   SynthActiveStakingDeleteSuperLikeCallParsedArgs
 } from './activeStaking';
-import { SynthSocialProfileAddReferrerIdCallParsedArgs } from './socialProfile';
+import {
+  SynthSocialProfileAddReferrerIdCallParsedArgs,
+  SynthSocialProfileSetActionPermissionsCallParsedArgs
+} from './socialProfile';
 import {
   OwnershipAcceptPendingOwnershipCallParsedArgs,
   OwnershipRejectPendingOwnershipCallParsedArgs,
@@ -317,6 +320,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthGamificationClaimTaskCallParsedArgs
     : E extends (typeof socialCallName)['synth_social_profile_add_referrer_id']
     ? SynthSocialProfileAddReferrerIdCallParsedArgs
+    : E extends (typeof socialCallName)['synth_social_profile_set_action_permissions']
+    ? SynthSocialProfileSetActionPermissionsCallParsedArgs
     : E extends (typeof socialCallName)['synth_add_post_view']
     ? SynthAddPostViewCallParsedArgs
     : E extends (typeof socialCallName)['synth_add_post_views_batch']

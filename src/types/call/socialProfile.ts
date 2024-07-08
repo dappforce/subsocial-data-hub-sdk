@@ -5,3 +5,13 @@ export interface SynthSocialProfileAddReferrerIdCallParsedArgs {
   clientId: DataHubClientId;
   timestamp?: string;
 }
+
+export type SocialProfileActionPermissions = {
+  createCommentRootPostIds?: string[];
+};
+
+export interface SynthSocialProfileSetActionPermissionsCallParsedArgs {
+  address: string;
+  allow?: SocialProfileActionPermissions;
+  forbid?: SocialProfileActionPermissions;
+}
