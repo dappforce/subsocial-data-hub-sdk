@@ -1,7 +1,5 @@
 import {
   ContentSrcDecorated,
-  PostKind,
-  ReactionKind,
   SpacePermissionsScope
 } from '../common';
 import {
@@ -26,7 +24,6 @@ import {
 } from './identity';
 import { socialCallName } from './constants';
 import {
-  SynthActiveStakingCreateContentlessActionCallParsedArgs,
   SynthActiveStakingCreateSuperLikeCallParsedArgs,
   SynthActiveStakingDeleteSuperLikeCallParsedArgs
 } from './activeStaking';
@@ -44,33 +41,23 @@ import {
   SynthGamificationAddTappingActivityStatesCallParsedArgs,
   SynthGamificationClaimTaskCallParsedArgs
 } from './gamification';
-
-export interface CreatePostCallParsedArgs extends ContentSrcDecorated {
-  forced: boolean;
-  forcedData?: {
-    account: string;
-    block: number;
-    time: string; // should be Date
-    owner: string;
-    hidden: boolean;
-  } | null;
-  postKind: PostKind;
-  originalPost?: string | null;
-  parentPostId?: string | null;
-  rootPostId?: string | null;
-  spaceId?: string | null | undefined;
-}
-
-export interface UpdatePostCallParsedArgs extends ContentSrcDecorated {
-  postId: string | null | undefined;
-  spaceId: string | null | undefined;
-  hidden: boolean | null | undefined;
-}
-
-export interface MovePostCallParsedArgs {
-  postId: string;
-  toSpace: string | null | undefined;
-}
+import {
+  CreatePostCallParsedArgs,
+  FollowPostCallParsedArgs,
+  MovePostCallParsedArgs,
+  PostReactionCreateCallParsedArgs,
+  PostReactionDeleteCallParsedArgs,
+  PostReactionUpdateCallParsedArgs,
+  SynthSetPostApprovedStatusCallParsedArgs,
+  SynthAddPostViewCallParsedArgs,
+  SynthAddPostViewsBatchCallParsedArgs,
+  SynthCreatePostTxFailedCallParsedArgs,
+  SynthCreatePostTxRetryCallParsedArgs,
+  SynthUpdatePostTxFailedCallParsedArgs,
+  SynthUpdatePostTxRetryCallParsedArgs,
+  UnfollowPostCallParsedArgs,
+  UpdatePostCallParsedArgs
+} from './post';
 
 export interface CreateSpaceCallParsedArgs extends ContentSrcDecorated {
   permissions?: SpacePermissionsScope;
@@ -97,32 +84,6 @@ export interface SetProfileCallParsedArgs {
   spaceId: string;
 }
 
-export interface PostReactionCreateCallParsedArgs {
-  postId: string;
-  reactionKind: ReactionKind;
-  forced: boolean;
-  forcedData: {
-    account: string;
-    block: number;
-    time: Date;
-  } | null;
-}
-
-export interface PostReactionUpdateCallParsedArgs {
-  postId: string;
-  reactionId: string;
-  newReactionKind: ReactionKind;
-}
-
-export interface PostReactionDeleteCallParsedArgs {
-  postId: string;
-  reactionId: string;
-  forced: boolean;
-  forcedData: {
-    account: string;
-  } | null;
-}
-
 export interface LinkEvmAddressCallParsedArgs {
   evmAddress: string;
   evmSignature: string;
@@ -130,13 +91,6 @@ export interface LinkEvmAddressCallParsedArgs {
 
 export interface UnlinkEvmAddressCallParsedArgs {
   evmAddress: string;
-}
-
-export interface UnfollowPostCallParsedArgs {
-  postId: string;
-}
-export interface FollowPostCallParsedArgs {
-  postId: string;
 }
 
 export interface UnfollowSpaceCallParsedArgs {
@@ -166,46 +120,6 @@ export interface AddProxyCallParsedArgs {
 export interface RemoveProxyCallParsedArgs {
   proxyAccountId: string;
   proxyType: string;
-}
-
-export interface SynthCreatePostTxFailedCallParsedArgs {
-  reason?: string;
-  optimisticId: string;
-  timestamp: string;
-}
-
-export interface SynthCreatePostTxRetryCallParsedArgs {
-  success: boolean;
-  reason?: string;
-  optimisticId: string;
-  timestamp: string;
-}
-
-export interface SynthUpdatePostTxFailedCallParsedArgs {
-  reason?: string;
-  optimisticId?: string;
-  persistentId: string;
-  timestamp: string;
-}
-
-export interface SynthUpdatePostTxRetryCallParsedArgs {
-  success: boolean;
-  reason?: string;
-  optimisticId?: string;
-  persistentId: string;
-  timestamp: string;
-}
-
-export interface SynthAddPostViewCallParsedArgs {
-  viewerId: string;
-  duration: number;
-  postId?: string;
-  postPersistentId?: string;
-  timestamp?: string;
-}
-
-export interface SynthAddPostViewsBatchCallParsedArgs {
-  views: SynthAddPostViewCallParsedArgs[];
 }
 
 export interface SynthFarcasterCreatePostFromCastCallParsedArgs {
@@ -322,6 +236,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthSocialProfileAddReferrerIdCallParsedArgs
     : E extends (typeof socialCallName)['synth_social_profile_set_action_permissions']
     ? SynthSocialProfileSetActionPermissionsCallParsedArgs
+    : E extends (typeof socialCallName)['synth_set_post_approve_status']
+    ? SynthSetPostApprovedStatusCallParsedArgs
     : E extends (typeof socialCallName)['synth_add_post_view']
     ? SynthAddPostViewCallParsedArgs
     : E extends (typeof socialCallName)['synth_add_post_views_batch']
