@@ -525,7 +525,8 @@ interface OwnershipRejectPendingOwnershipCallParsedArgs {
 
 declare enum GamificationTaskName {
     JOIN_TELEGRAM_CHANNEL = "JOIN_TELEGRAM_CHANNEL",
-    JOIN_TWITTER = "JOIN_TWITTER"
+    JOIN_TWITTER = "JOIN_TWITTER",
+    INVITE_REFERRALS = "INVITE_REFERRALS"
 }
 declare enum GamificationTaskPeriodicity {
     ONETIME = "ONETIME",
