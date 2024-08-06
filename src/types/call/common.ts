@@ -1,7 +1,4 @@
-import {
-  ContentSrcDecorated,
-  SpacePermissionsScope
-} from '../common';
+import { ContentSrcDecorated, SpacePermissionsScope } from '../common';
 import {
   SynthModerationAddCtxToOrganizationCallParsedArgs,
   SynthModerationAddDefaultCtxToModeratorCallParsedArgs,
@@ -20,7 +17,8 @@ import {
   SynthAddLinkedIdentityExternalProviderCallParsedArgs,
   SynthCreateLinkedIdentityCallParsedArgs,
   SynthDeleteLinkedIdentityCallParsedArgs,
-  SynthInitLinkedIdentityCallParsedArgs
+  SynthInitLinkedIdentityCallParsedArgs,
+  SynthUpdateLinkedIdentityExternalProviderCallParsedArgs
 } from './identity';
 import { socialCallName } from './constants';
 import {
@@ -198,6 +196,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthInitLinkedIdentityCallParsedArgs
     : E extends (typeof socialCallName)['synth_add_linked_identity_external_provider']
     ? SynthAddLinkedIdentityExternalProviderCallParsedArgs
+    : E extends (typeof socialCallName)['synth_update_linked_identity_external_provider']
+    ? SynthUpdateLinkedIdentityExternalProviderCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_init_moderator']
     ? SynthModerationInitModeratorCallParsedArgs
     : E extends (typeof socialCallName)['synth_moderation_add_ctx_to_organization']

@@ -25,6 +25,11 @@ export interface SynthAddLinkedIdentityExternalProviderCallParsedArgs {
   externalProvider: LinkedIdentityExternalProviderDetails;
 }
 
+export interface SynthUpdateLinkedIdentityExternalProviderCallParsedArgs {
+  entityId: string;
+  externalProvider: LinkedIdentityExternalProviderDetails;
+}
+
 export interface SynthDeleteLinkedIdentityCallParsedArgs {
   id: string;
   provider: IdentityProvider;
