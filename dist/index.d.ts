@@ -364,6 +364,7 @@ declare enum IdentityProvider {
     GOOGLE = "GOOGLE",
     POLKADOT = "POLKADOT",
     EVM = "EVM",
+    SOLANA = "SOLANA",
     FARCASTER = "FARCASTER",
     TELEGRAM = "TELEGRAM"
 }
