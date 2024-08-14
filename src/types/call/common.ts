@@ -22,6 +22,7 @@ import {
 } from './identity';
 import { socialCallName } from './constants';
 import {
+  SynthActiveStakingCreateFarcasterFrameLikeCallParsedArgs,
   SynthActiveStakingCreateSuperLikeCallParsedArgs,
   SynthActiveStakingDeleteSuperLikeCallParsedArgs
 } from './activeStaking';
@@ -226,6 +227,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthActiveStakingCreateSuperLikeCallParsedArgs
     : E extends (typeof socialCallName)['synth_active_staking_delete_super_like']
     ? SynthActiveStakingDeleteSuperLikeCallParsedArgs
+    : E extends (typeof socialCallName)['synth_active_staking_create_farcaster_frame_like']
+    ? SynthActiveStakingCreateFarcasterFrameLikeCallParsedArgs
     : E extends (typeof socialCallName)['synth_gamification_add_tapping_activity_states']
     ? SynthGamificationAddTappingActivityStatesCallParsedArgs
     : E extends (typeof socialCallName)['synth_gamification_claim_entrance_daily_reward']

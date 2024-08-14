@@ -92,6 +92,8 @@ export const socialCallName = {
     'synth_active_staking_create_super_like',
   synth_active_staking_delete_super_like:
     'synth_active_staking_delete_super_like',
+  synth_active_staking_create_farcaster_frame_like:
+    'synth_active_staking_create_farcaster_frame_like',
 
   synth_gamification_add_tapping_activity_states:
     'synth_gamification_add_tapping_activity_states',

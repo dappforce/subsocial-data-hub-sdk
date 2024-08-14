@@ -26,3 +26,8 @@ export interface SynthActiveStakingCreateContentlessActionCallParsedArgs {
   tapsCount?: number;
   energyState?: ContentlessActionTapEnergyState;
 }
+
+export interface SynthActiveStakingCreateFarcasterFrameLikeCallParsedArgs {
+  frameId: number;
+  frameStepIndex: number;
+}
