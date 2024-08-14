@@ -509,6 +509,7 @@ interface SynthActiveStakingCreateContentlessActionCallParsedArgs {
 interface SynthActiveStakingCreateFarcasterFrameLikeCallParsedArgs {
     frameId: number;
     frameStepIndex: number;
+    actorFid?: number;
 }
 
 interface SynthSocialProfileAddReferrerIdCallParsedArgs {

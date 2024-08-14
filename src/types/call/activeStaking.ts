@@ -30,4 +30,5 @@ export interface SynthActiveStakingCreateContentlessActionCallParsedArgs {
 export interface SynthActiveStakingCreateFarcasterFrameLikeCallParsedArgs {
   frameId: number;
   frameStepIndex: number;
+  actorFid?: number;
 }
