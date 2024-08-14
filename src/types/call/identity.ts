@@ -15,6 +15,8 @@ export interface LinkedIdentityExternalProviderDetails {
   farcasterSignerUuid?: string;
   evmProofMsg?: string;
   evmProofMsgSig?: string;
+  solProofMsg?: string;
+  solProofMsgSig?: string;
 }
 
 export interface SynthInitLinkedIdentityCallParsedArgs {

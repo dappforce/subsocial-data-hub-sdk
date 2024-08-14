@@ -383,6 +383,8 @@ interface LinkedIdentityExternalProviderDetails {
     farcasterSignerUuid?: string;
     evmProofMsg?: string;
     evmProofMsgSig?: string;
+    solProofMsg?: string;
+    solProofMsgSig?: string;
 }
 interface SynthInitLinkedIdentityCallParsedArgs {
     externalProvider?: LinkedIdentityExternalProviderDetails;
