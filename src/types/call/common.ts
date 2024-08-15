@@ -57,6 +57,10 @@ import {
   UnfollowPostCallParsedArgs,
   UpdatePostCallParsedArgs
 } from './post';
+import {
+  SynthCreateContentContainerConfigCallParsedArgs,
+  SynthUpdateContentContainerConfigCallParsedArgs
+} from './contentContainerConfig';
 
 export interface CreateSpaceCallParsedArgs extends ContentSrcDecorated {
   permissions?: SpacePermissionsScope;
@@ -249,6 +253,10 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthFarcasterCreatePostFromCastCallParsedArgs
     : E extends (typeof socialCallName)['synth_farcaster_create_super_like_from_reaction']
     ? SynthFarcasterCreateSuperLikeFromReactionCallParsedArgs
+    : E extends (typeof socialCallName)['synth_create_content_container_config']
+    ? SynthCreateContentContainerConfigCallParsedArgs
+    : E extends (typeof socialCallName)['synth_update_content_container_config']
+    ? SynthUpdateContentContainerConfigCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {

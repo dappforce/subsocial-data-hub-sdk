@@ -7,3 +7,4 @@ export * from './activeStaking';
 export * from './socialProfile';
 export * from './ownership';
 export * from './gamification';
+export * from './contentContainerConfig';

@@ -110,5 +110,9 @@ export const socialCallName = {
   synth_farcaster_create_post_from_cast:
     'synth_farcaster_create_post_from_cast',
   synth_farcaster_create_super_like_from_reaction:
-    'synth_farcaster_create_super_like_from_reaction'
+    'synth_farcaster_create_super_like_from_reaction',
+
+  synth_create_content_container_config:
+    'synth_create_content_container_config',
+  synth_update_content_container_config: 'synth_update_content_container_config'
 } as const;
