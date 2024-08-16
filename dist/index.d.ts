@@ -388,6 +388,7 @@ interface LinkedIdentityExternalProviderDetails {
 }
 interface SynthInitLinkedIdentityCallParsedArgs {
     externalProvider?: LinkedIdentityExternalProviderDetails;
+    synthetic?: boolean;
 }
 interface SynthAddLinkedIdentityExternalProviderCallParsedArgs {
     externalProvider: LinkedIdentityExternalProviderDetails;

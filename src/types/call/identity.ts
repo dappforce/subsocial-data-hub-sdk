@@ -21,6 +21,7 @@ export interface LinkedIdentityExternalProviderDetails {
 
 export interface SynthInitLinkedIdentityCallParsedArgs {
   externalProvider?: LinkedIdentityExternalProviderDetails;
+  synthetic?: boolean;
 }
 
 export interface SynthAddLinkedIdentityExternalProviderCallParsedArgs {
