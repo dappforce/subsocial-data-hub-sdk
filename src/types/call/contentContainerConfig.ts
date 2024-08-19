@@ -18,6 +18,13 @@ export interface ContentContainerConfigMetadata {
   rewardPoolAmount?: string;
   winnersNumber?: number;
 }
+export interface ContentContainerExternalToken {
+  name: string;
+  label: string;
+  chain: ContentContainerExternalTokenChain;
+  address: string;
+  decimals: number;
+}
 
 export interface ContentContainerConfigOptionalProps {
   hidden?: boolean;
@@ -32,13 +39,7 @@ export interface ContentContainerConfigOptionalProps {
   postBlockOneTimePenaltyPointsAmount?: string;
   addressBlockOneTimePenaltyPointsAmount?: string;
   accessThresholdPointsAmount?: string;
-
-  externalTokenName?: string;
-  externalTokenLabel?: string;
-  externalTokenChain?: ContentContainerExternalTokenChain;
-  externalTokenAddress?: string;
-  externalTokenDecimals?: number;
-
+  externalToken?: ContentContainerExternalToken;
   accessThresholdExternalTokenAmount?: string;
   likeThresholdExternalTokenAmount?: string;
   metadata?: ContentContainerConfigMetadata;
