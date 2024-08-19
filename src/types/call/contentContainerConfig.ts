@@ -4,13 +4,18 @@ export enum ContentContainerType {
   CONTEST = 'CONTEST'
 }
 
+export enum ContentContainerExternalTokenChain {
+  ETHEREUM = 'ETHEREUM',
+  SOLANA = 'SOLANA'
+}
+
 export interface ContentContainerConfigMetadata {
   title?: string;
   description?: string;
   image?: string;
   coverImage?: string;
-  rewardPoolTokenName?: string;
-  rewardPoolTokensAmount?: string;
+  isExternalTokenRewardPool?: string;
+  rewardPoolAmount?: string;
   winnersNumber?: number;
 }
 
@@ -27,8 +32,13 @@ export interface ContentContainerConfigOptionalProps {
   postBlockOneTimePenaltyPointsAmount?: string;
   addressBlockOneTimePenaltyPointsAmount?: string;
   accessThresholdPointsAmount?: string;
-  accessThresholdExternalTokenName?: string;
-  accessThresholdExternalTokenAddress?: string;
+
+  externalTokenName?: string;
+  externalTokenLabel?: string;
+  externalTokenChain?: ContentContainerExternalTokenChain;
+  externalTokenAddress?: string;
+  externalTokenDecimals?: number;
+
   accessThresholdExternalTokenAmount?: string;
   likeThresholdExternalTokenAmount?: string;
   metadata?: ContentContainerConfigMetadata;
