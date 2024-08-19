@@ -694,6 +694,7 @@ interface ContentContainerConfigOptionalProps {
     accessThresholdExternalTokenName?: string;
     accessThresholdExternalTokenAddress?: string;
     accessThresholdExternalTokenAmount?: string;
+    likeThresholdExternalTokenAmount?: string;
     metadata?: ContentContainerConfigMetadata;
 }
 interface SynthCreateContentContainerConfigCallParsedArgs extends ContentContainerConfigOptionalProps {
