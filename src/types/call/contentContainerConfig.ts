@@ -14,7 +14,7 @@ export interface ContentContainerConfigMetadata {
   description?: string;
   image?: string;
   coverImage?: string;
-  isExternalTokenRewardPool?: string;
+  isExternalTokenRewardPool?: boolean;
   rewardPoolAmount?: string;
   winnersNumber?: number;
 }
