@@ -684,7 +684,7 @@ interface ContentContainerConfigMetadata {
 }
 interface ContentContainerExternalToken {
     name: string;
-    label: string;
+    symbol: string;
     chain: ContentContainerExternalTokenChain;
     address: string;
     decimals: number;
