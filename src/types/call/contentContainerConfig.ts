@@ -23,6 +23,7 @@ export interface ContentContainerExternalToken {
   symbol: string;
   chain: ContentContainerExternalTokenChain;
   address: string;
+  contractAbi?: string;
   decimals: number;
 }
 
