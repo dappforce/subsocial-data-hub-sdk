@@ -48,6 +48,7 @@ export interface ContentContainerConfigOptionalProps {
 export interface SynthCreateContentContainerConfigCallParsedArgs
   extends ContentContainerConfigOptionalProps {
   rootPostId: string;
+  rootSpaceId: string;
   slug: string;
   containerType: ContentContainerType;
 }
