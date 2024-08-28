@@ -15,3 +15,7 @@ export interface SynthSocialProfileSetActionPermissionsCallParsedArgs {
   allow?: SocialProfileActionPermissions;
   forbid?: SocialProfileActionPermissions;
 }
+
+export interface SynthSocialProfileSyncExternalTokenBalanceCallParsedArgs {
+  externalTokenId: string;
+}

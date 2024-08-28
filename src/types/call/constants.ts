@@ -104,6 +104,9 @@ export const socialCallName = {
   synth_social_profile_add_referrer_id: 'synth_social_profile_add_referrer_id',
   synth_social_profile_set_action_permissions:
     'synth_social_profile_set_action_permissions',
+  synth_social_profile_sync_external_token_balance:
+    'synth_social_profile_sync_external_token_balance',
+
   synth_set_post_approve_status: 'synth_set_post_approve_status',
   synth_add_post_view: 'synth_add_post_view',
   synth_add_post_views_batch: 'synth_add_post_views_batch',

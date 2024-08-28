@@ -28,7 +28,8 @@ import {
 } from './activeStaking';
 import {
   SynthSocialProfileAddReferrerIdCallParsedArgs,
-  SynthSocialProfileSetActionPermissionsCallParsedArgs
+  SynthSocialProfileSetActionPermissionsCallParsedArgs,
+  SynthSocialProfileSyncExternalTokenBalanceCallParsedArgs
 } from './socialProfile';
 import {
   OwnershipAcceptPendingOwnershipCallParsedArgs,
@@ -257,6 +258,8 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthCreateContentContainerConfigCallParsedArgs
     : E extends (typeof socialCallName)['synth_update_content_container_config']
     ? SynthUpdateContentContainerConfigCallParsedArgs
+    : E extends (typeof socialCallName)['synth_social_profile_sync_external_token_balance']
+    ? SynthSocialProfileSyncExternalTokenBalanceCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {
