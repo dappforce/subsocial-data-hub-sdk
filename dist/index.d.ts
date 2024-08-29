@@ -376,6 +376,7 @@ interface SynthCreateLinkedIdentityCallParsedArgs {
 interface LinkedIdentityExternalProviderDetails {
     id: string;
     provider: IdentityProvider;
+    enabled?: boolean;
     username?: string;
     farcasterCustodyAddress?: string;
     farcasterVerifiedEthAddresses?: string[];
