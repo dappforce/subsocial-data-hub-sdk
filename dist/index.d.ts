@@ -692,6 +692,9 @@ interface ContentContainerExternalToken {
     chain: ContentContainerExternalTokenChain;
     address: string;
     contractAbi?: string;
+    contractMethods?: {
+        balanceOf?: string;
+    };
     decimals: number;
 }
 interface ContentContainerConfigOptionalProps {
