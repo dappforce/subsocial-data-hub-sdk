@@ -1,12 +1,9 @@
+import { ExternalToken } from './externalToken';
+
 export enum ContentContainerType {
   PUBLIC_CHANNEL = 'PUBLIC_CHANNEL',
   COMMUNITY_CHANNEL = 'COMMUNITY_CHANNEL',
   CONTEST = 'CONTEST'
-}
-
-export enum ContentContainerExternalTokenChain {
-  ETHEREUM = 'ETHEREUM',
-  SOLANA = 'SOLANA'
 }
 
 export interface ContentContainerConfigMetadata {
@@ -17,15 +14,6 @@ export interface ContentContainerConfigMetadata {
   isExternalTokenRewardPool?: boolean;
   rewardPoolAmount?: string;
   winnersNumber?: number;
-}
-export interface ContentContainerExternalToken {
-  name: string;
-  symbol: string;
-  chain: ContentContainerExternalTokenChain;
-  address: string;
-  contractAbi?: string;
-  contractMethods?: { balanceOf?: string };
-  decimals: number;
 }
 
 export interface ContentContainerConfigOptionalProps {
@@ -41,7 +29,7 @@ export interface ContentContainerConfigOptionalProps {
   postBlockOneTimePenaltyPointsAmount?: string;
   addressBlockOneTimePenaltyPointsAmount?: string;
   accessThresholdPointsAmount?: string;
-  externalToken?: ContentContainerExternalToken;
+  externalToken?: Pick<ExternalToken, 'symbol' | 'chain'>;
   accessThresholdExternalTokenAmount?: string;
   likeThresholdExternalTokenAmount?: string;
   metadata?: ContentContainerConfigMetadata;
