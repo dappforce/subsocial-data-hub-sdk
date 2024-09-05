@@ -26,6 +26,7 @@ export interface ContentContainerConfigOptionalProps {
   isPostModerationPenalty?: boolean;
   isCreatorModerationPenalty?: boolean;
   isDeductionRewardsOnModeration?: boolean;
+  createCommentPricePointsAmount?: string;
   postBlockOneTimePenaltyPointsAmount?: string;
   addressBlockOneTimePenaltyPointsAmount?: string;
   accessThresholdPointsAmount?: string;
