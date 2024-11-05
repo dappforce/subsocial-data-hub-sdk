@@ -9,3 +9,4 @@ export * from './ownership';
 export * from './gamification';
 export * from './contentContainerConfig';
 export * from './externalToken';
+export * from './access';

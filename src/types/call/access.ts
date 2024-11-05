@@ -1,0 +1,21 @@
+export enum AccessRoleName {
+  OWNER = 'OWNER',
+  EDITOR = 'EDITOR',
+  FOLLOWER = 'FOLLOWER',
+  MODERATOR = 'MODERATOR'
+}
+
+export enum AccessPermissionName {
+  CREATE_POST = 'CREATE_POST',
+  EDIT_POST = 'EDIT_POST',
+  REPLY_POST = 'REPLY_POST',
+  SHARE_POST = 'SHARE_POST',
+  EDIT_SPACE = 'EDIT_SPACE',
+  TRANSFER_POST_OWNERSHIP = 'TRANSFER_POST_OWNERSHIP',
+  TRANSFER_SPACE_OWNERSHIP = 'TRANSFER_SPACE_OWNERSHIP'
+}
+
+export enum AccessPermissionContext {
+  SPACE = 'SPACE',
+  POST = 'POST'
+}
