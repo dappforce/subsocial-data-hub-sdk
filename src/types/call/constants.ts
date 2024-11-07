@@ -119,5 +119,8 @@ export const socialCallName = {
     'synth_create_content_container_config',
   synth_update_content_container_config:
     'synth_update_content_container_config',
-  synth_create_external_token: 'synth_create_external_token'
+  synth_create_external_token: 'synth_create_external_token',
+
+  synth_access_set_role_permission: 'synth_access_set_role_permission',
+  synth_access_set_user_role: 'synth_access_set_user_role'
 } as const;

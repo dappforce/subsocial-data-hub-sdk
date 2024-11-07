@@ -63,6 +63,10 @@ import {
   SynthUpdateContentContainerConfigCallParsedArgs
 } from './contentContainerConfig';
 import { SynthCreateExternalTokenCallParsedArgs } from './externalToken';
+import {
+  SynthAccessSetRolePermissionCallParsedArgs,
+  SynthAccessSetUserRoleCallParsedArgs
+} from './access';
 
 export interface CreateSpaceCallParsedArgs extends ContentSrcDecorated {
   permissions?: SpacePermissionsScope;
@@ -263,6 +267,10 @@ export type SocialCallDataArgs<E extends keyof typeof socialCallName> =
     ? SynthSocialProfileSyncExternalTokenBalanceCallParsedArgs
     : E extends (typeof socialCallName)['synth_create_external_token']
     ? SynthCreateExternalTokenCallParsedArgs
+    : E extends (typeof socialCallName)['synth_access_set_role_permission']
+    ? SynthAccessSetRolePermissionCallParsedArgs
+    : E extends (typeof socialCallName)['synth_access_set_user_role']
+    ? SynthAccessSetUserRoleCallParsedArgs
     : undefined;
 
 export type SocialCallData<C extends keyof typeof socialCallName> = {

@@ -1,3 +1,5 @@
+import { SocialProfileActionPermissions } from './socialProfile';
+
 export enum AccessRoleName {
   OWNER = 'OWNER',
   EDITOR = 'EDITOR',
@@ -18,4 +20,18 @@ export enum AccessPermissionName {
 export enum AccessPermissionContext {
   SPACE = 'SPACE',
   POST = 'POST'
+}
+
+export interface SynthAccessSetUserRoleCallParsedArgs {
+  roleName: AccessRoleName;
+  context: AccessPermissionContext;
+  spaceId?: string;
+}
+
+export interface SynthAccessSetRolePermissionCallParsedArgs {
+  context: AccessPermissionContext;
+  spaceId?: string;
+  roleName: AccessRoleName;
+  permissionName: AccessPermissionName;
+  allowed: boolean;
 }
