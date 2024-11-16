@@ -768,6 +768,7 @@ interface SynthAccessSetUserRoleCallParsedArgs {
 }
 interface SynthAccessSetRolePermissionCallParsedArgs {
     context: AccessPermissionContext;
+    active: boolean;
     spaceId: string;
     roleName: AccessRoleName;
     permissionName: AccessPermissionName;

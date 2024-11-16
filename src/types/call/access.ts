@@ -35,6 +35,7 @@ export interface SynthAccessSetUserRoleCallParsedArgs {
 
 export interface SynthAccessSetRolePermissionCallParsedArgs {
   context: AccessPermissionContext;
+  active: boolean;
   spaceId: string;
   roleName: AccessRoleName;
   permissionName: AccessPermissionName;
