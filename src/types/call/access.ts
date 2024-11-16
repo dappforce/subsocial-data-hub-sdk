@@ -4,7 +4,8 @@ export enum AccessRoleName {
   OWNER = 'OWNER',
   EDITOR = 'EDITOR',
   FOLLOWER = 'FOLLOWER',
-  MODERATOR = 'MODERATOR'
+  MODERATOR = 'MODERATOR',
+  GUEST = 'GUEST'
 }
 
 export enum AccessPermissionName {
