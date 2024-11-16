@@ -762,12 +762,11 @@ declare enum AccessPermissionContext {
 }
 interface SynthAccessSetUserRoleCallParsedArgs {
     roleName: AccessRoleName;
-    context: AccessPermissionContext;
+    active: boolean;
     address: string;
     spaceId?: string;
 }
 interface SynthAccessSetRolePermissionCallParsedArgs {
-    context: AccessPermissionContext;
     spaceId?: string;
     roleName: AccessRoleName;
     permissionName: AccessPermissionName;

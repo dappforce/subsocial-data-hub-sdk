@@ -28,13 +28,12 @@ export enum AccessPermissionContext {
 
 export interface SynthAccessSetUserRoleCallParsedArgs {
   roleName: AccessRoleName;
-  context: AccessPermissionContext;
+  active: boolean;
   address: string;
   spaceId?: string;
 }
 
 export interface SynthAccessSetRolePermissionCallParsedArgs {
-  context: AccessPermissionContext;
   spaceId?: string;
   roleName: AccessRoleName;
   permissionName: AccessPermissionName;
