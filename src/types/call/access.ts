@@ -1,0 +1,43 @@
+import { SocialProfileActionPermissions } from './socialProfile';
+
+export enum AccessRoleName {
+  OWNER = 'OWNER',
+  EDITOR = 'EDITOR',
+  FOLLOWER = 'FOLLOWER',
+  MODERATOR = 'MODERATOR',
+  GUEST = 'GUEST'
+}
+
+export enum AccessPermissionName {
+  CREATE_POST = 'CREATE_POST',
+  EDIT_POST = 'EDIT_POST',
+  REPLY_POST = 'REPLY_POST',
+  SHARE_POST = 'SHARE_POST',
+  MODERATE_RESOURCE = 'MODERATE_RESOURCE',
+  EDIT_SPACE = 'EDIT_SPACE',
+  EDIT_SPACE_USER_ROLE = 'EDIT_SPACE_USER_ROLE',
+  EDIT_SPACE_PERMISSION_CONFIG = 'EDIT_SPACE_PERMISSION_CONFIG',
+  TRANSFER_POST_OWNERSHIP = 'TRANSFER_POST_OWNERSHIP',
+  TRANSFER_SPACE_OWNERSHIP = 'TRANSFER_SPACE_OWNERSHIP'
+}
+
+export enum AccessPermissionContext {
+  SPACE = 'SPACE',
+  POST = 'POST'
+}
+
+export interface SynthAccessSetUserRoleCallParsedArgs {
+  roleName: AccessRoleName;
+  active: boolean;
+  address: string;
+  spaceId?: string;
+}
+
+export interface SynthAccessSetRolePermissionCallParsedArgs {
+  context: AccessPermissionContext;
+  active: boolean;
+  spaceId: string;
+  roleName: AccessRoleName;
+  permissionName: AccessPermissionName;
+  allowed: boolean;
+}

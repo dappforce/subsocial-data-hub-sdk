@@ -1,0 +1,126 @@
+export const socialCallName = {
+  create_post: 'create_post',
+  force_create_post: 'force_create_post',
+  update_post: 'update_post',
+  move_post: 'move_post',
+  follow_post: 'follow_post',
+  unfollow_post: 'unfollow_post',
+
+  create_space: 'create_space',
+  update_space: 'update_space',
+
+  force_create_space: 'force_create_space',
+  create_space_as_profile: 'create_space_as_profile',
+
+  set_profile: 'set_profile',
+  reset_profile: 'reset_profile',
+  force_set_space_as_profile: 'force_set_space_as_profile',
+
+  create_post_reaction: 'create_post_reaction',
+  force_create_post_reaction: 'force_create_post_reaction',
+  update_post_reaction: 'update_post_reaction',
+  delete_post_reaction: 'delete_post_reaction',
+  force_delete_post_reaction: 'force_delete_post_reaction',
+
+  follow_account: 'follow_account',
+  force_follow_account: 'force_follow_account',
+  unfollow_account: 'unfollow_account',
+  link_eth_address: 'link_eth_address',
+  link_evm_address: 'link_evm_address',
+  unlink_evm_address: 'unlink_evm_address',
+  create_resource_discussion: 'create_resource_discussion',
+  link_post_to_resource: 'link_post_to_resource',
+  follow_space: 'follow_space',
+  force_follow_space: 'force_follow_space',
+  unfollow_space: 'unfollow_space',
+
+  transfer_space_ownership: 'transfer_space_ownership',
+  accept_pending_ownership: 'accept_pending_ownership',
+  reject_pending_ownership: 'reject_pending_ownership',
+
+  ownership_transfer_ownership: 'ownership_transfer_ownership',
+  ownership_accept_pending_ownership: 'ownership_accept_pending_ownership',
+  ownership_reject_pending_ownership: 'ownership_reject_pending_ownership',
+
+  register_domain: 'register_domain',
+  force_register_domain: 'force_register_domain',
+  set_domain_content: 'set_domain_content',
+  set_inner_value: 'set_inner_value',
+  force_set_inner_value: 'force_set_inner_value',
+  set_outer_value: 'set_outer_value',
+  set_payment_beneficiary: 'set_payment_beneficiary',
+  add_proxy: 'add_proxy',
+  remove_proxy: 'remove_proxy',
+
+  synth_create_post_tx_failed: 'synth_create_post_tx_failed',
+  synth_create_post_tx_retry: 'synth_create_post_tx_retry',
+  synth_update_post_tx_failed: 'synth_update_post_tx_failed',
+  synth_update_post_tx_retry: 'synth_update_post_tx_retry',
+
+  synth_create_linked_identity: 'synth_create_linked_identity',
+  synth_delete_linked_identity: 'synth_delete_linked_identity',
+  synth_init_linked_identity: 'synth_init_linked_identity',
+  synth_add_linked_identity_external_provider:
+    'synth_add_linked_identity_external_provider',
+  synth_update_linked_identity_external_provider:
+    'synth_update_linked_identity_external_provider',
+
+  synth_moderation_init_moderator: 'synth_moderation_init_moderator',
+  synth_moderation_force_init_moderator:
+    'synth_moderation_force_init_moderator',
+  synth_moderation_add_default_ctx_to_moderator:
+    'synth_moderation_add_default_ctx_to_moderator',
+  synth_moderation_force_add_default_ctx_to_moderator:
+    'synth_moderation_force_add_default_ctx_to_moderator',
+  synth_moderation_add_ctx_to_organization:
+    'synth_moderation_add_ctx_to_organization',
+
+  synth_moderation_force_add_ctx_to_organization:
+    'synth_moderation_force_add_ctx_to_organization',
+  synth_moderation_block_resource: 'synth_moderation_block_resource',
+  synth_moderation_force_block_resource:
+    'synth_moderation_force_block_resource',
+  synth_moderation_unblock_resource: 'synth_moderation_unblock_resource',
+  synth_moderation_force_unblock_resource:
+    'synth_moderation_force_unblock_resource',
+  synth_moderation_force_init_organization:
+    'synth_moderation_force_init_organization',
+  synth_moderation_force_add_organization_moderator:
+    'synth_moderation_force_add_organization_moderator',
+
+  synth_active_staking_create_super_like:
+    'synth_active_staking_create_super_like',
+  synth_active_staking_delete_super_like:
+    'synth_active_staking_delete_super_like',
+  synth_active_staking_create_farcaster_frame_like:
+    'synth_active_staking_create_farcaster_frame_like',
+
+  synth_gamification_add_tapping_activity_states:
+    'synth_gamification_add_tapping_activity_states',
+  synth_gamification_claim_entrance_daily_reward:
+    'synth_gamification_claim_entrance_daily_reward',
+  synth_gamification_claim_task: 'synth_gamification_claim_task',
+
+  synth_social_profile_add_referrer_id: 'synth_social_profile_add_referrer_id',
+  synth_social_profile_set_action_permissions:
+    'synth_social_profile_set_action_permissions',
+  synth_social_profile_sync_external_token_balance:
+    'synth_social_profile_sync_external_token_balance',
+
+  synth_set_post_approve_status: 'synth_set_post_approve_status',
+  synth_add_post_view: 'synth_add_post_view',
+  synth_add_post_views_batch: 'synth_add_post_views_batch',
+  synth_farcaster_create_post_from_cast:
+    'synth_farcaster_create_post_from_cast',
+  synth_farcaster_create_super_like_from_reaction:
+    'synth_farcaster_create_super_like_from_reaction',
+
+  synth_create_content_container_config:
+    'synth_create_content_container_config',
+  synth_update_content_container_config:
+    'synth_update_content_container_config',
+  synth_create_external_token: 'synth_create_external_token',
+
+  synth_access_set_role_permission: 'synth_access_set_role_permission',
+  synth_access_set_user_role: 'synth_access_set_user_role'
+} as const;
